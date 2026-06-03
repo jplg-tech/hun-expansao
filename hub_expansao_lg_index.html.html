@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Expansão Comercial · LG lugar de gente</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --db:#0D3F8F;--mb:#1A63C6;--y:#F5C800;--w:#fff;
+  --mu:rgba(255,255,255,.55);--brd:rgba(255,255,255,.12);--cd:rgba(255,255,255,.07);
+  --sp:#F5C800;--sul:#5DDDB8;--ne:#F58C3E;
+}
+body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:100vh;}
+/* HEADER */
+.hdr{background:var(--db);padding:18px 28px 0;border-bottom:2px solid var(--y);}
+.logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.lm{width:36px;height:36px;background:var(--y);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;color:var(--db);}
+.lt{line-height:1.1;}
+.ln{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;}
+.ls{font-size:9px;color:var(--mu);letter-spacing:.08em;text-transform:uppercase;}
+.htop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+.htitle{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,3vw,28px);text-transform:uppercase;letter-spacing:.01em;}
+.htitle span{color:var(--y);font-style:italic;}
+.hsub{font-size:12px;color:var(--mu);margin-top:4px;margin-bottom:16px;}
+.hbadges{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+.hb{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid;}
+.hb-sp{border-color:var(--sp);color:var(--sp);}
+.hb-sul{border-color:var(--sul);color:var(--sul);}
+.hb-ne{border-color:var(--ne);color:var(--ne);}
+/* NAV */
+.nav{display:flex;background:var(--db);border-bottom:1px solid var(--brd);overflow-x:auto;}
+.tab{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:14px 18px;cursor:pointer;color:var(--mu);border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;transition:color .2s,border-color .2s;}
+.tab:hover{color:#fff;}
+.tab.active{color:var(--y);border-bottom-color:var(--y);}
+/* SECTIONS */
+.sec{display:none;padding:24px 28px;}
+.sec.active{display:block;}
+/* KPI */
+.krow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--brd);border-radius:10px;overflow:hidden;border:1px solid var(--brd);margin-bottom:22px;}
+.kpi{background:var(--db);padding:16px 14px;}
+.kl{font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--mu);margin-bottom:6px;}
+.kv{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;line-height:1;color:var(--y);}
+.ks{font-size:10px;color:var(--mu);margin-top:3px;}
+/* CHARTS */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
+.cc{background:var(--db);border:1px solid var(--brd);border-radius:10px;padding:20px;}
+.cc.full{grid-column:1/-1;}
+.ct{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
+.cs{font-size:11px;color:var(--mu);margin-bottom:14px;}
+.cw{position:relative;height:240px;}
+.cw.tall{height:300px;}
+.cw.sm{height:220px;}
+/* TABLE */
+.rtbl{width:100%;border-collapse:collapse;}
+.rtbl th{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);padding:8px 10px;text-align:left;border-bottom:1px solid var(--brd);}
+.rtbl td{padding:11px 10px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle;}
+.rtbl tr:last-child td{border-bottom:none;}
+.rtbl tr:hover td{background:var(--cd);}
+.rn{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;}
+.r1{background:var(--y);color:var(--db);}
+.r2{background:rgba(245,200,0,.2);color:var(--y);}
+.r3{background:rgba(245,200,0,.1);color:var(--y);}
+.ro{background:rgba(255,255,255,.07);color:var(--mu);}
+.ct2{font-size:8px;font-weight:700;letter-spacing:.07em;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
+.tsp{background:rgba(245,200,0,.15);color:var(--sp);}
+.tsul{background:rgba(93,221,184,.15);color:var(--sul);}
+.tne{background:rgba(245,140,62,.15);color:var(--ne);}
+.sbw{display:flex;align-items:center;gap:8px;}
+.sbb{flex:1;height:3px;background:rgba(255,255,255,.1);border-radius:2px;min-width:60px;}
+.sbf{height:100%;border-radius:2px;}
+.sv{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;min-width:28px;text-align:right;}
+/* ADD UI */
+.addb{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);border:1px dashed rgba(255,255,255,.2);border-radius:8px;padding:9px 14px;width:100%;cursor:pointer;background:transparent;text-align:left;margin-top:8px;}
+.addb:hover{background:var(--cd);color:#fff;}
+.blk{background:var(--cd);border:1px solid var(--brd);border-radius:9px;padding:14px;margin-bottom:10px;}
+.btit{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.bbody{display:none;padding-top:10px;border-top:1px solid var(--brd);margin-top:10px;font-size:12px;color:var(--mu);line-height:1.6;}
+.bbody.open{display:block;}
+.irow{display:flex;gap:8px;margin-bottom:8px;}
+.irow input,.irow textarea{flex:1;font-size:12px;font-family:'Barlow',sans-serif;border:1px solid var(--brd);border-radius:7px;padding:7px 10px;background:rgba(255,255,255,.07);color:#fff;}
+.irow input::placeholder,.irow textarea::placeholder{color:var(--mu);}
+.irow button{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.05em;padding:7px 14px;border-radius:7px;border:1px solid var(--brd);background:var(--y);color:var(--db);cursor:pointer;white-space:nowrap;}
+.irow button.cn{background:transparent;color:var(--mu);}
+.trow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.ut{font-size:10px;font-weight:600;padding:3px 9px;border-radius:999px;cursor:pointer;border:1px solid transparent;}
+.form-box{margin-top:8px;background:var(--cd);border:1px solid var(--brd);border-radius:9px;padding:16px;}
+.sec-lbl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);margin-bottom:4px;}
+.sec-ttl{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;margin-bottom:16px;}
+.chv{font-size:11px;color:var(--mu);transition:transform .2s;}
+.chv.open{transform:rotate(180deg);}
+.hidden{display:none;}
+.ftr{padding:14px 28px;border-top:1px solid var(--brd);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;background:var(--db);}
+.ftr p{font-size:10px;color:var(--mu);}
+@media(max-width:640px){.cg{grid-template-columns:1fr;}.cc.full{grid-column:1;}.hdr,.nav,.sec,.ftr{padding-left:16px;padding-right:16px;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="htop">
+    <div>
+      <div class="logo">
+        <div class="lm">LG</div>
+        <div class="lt"><div class="ln">lugar de gente</div><div class="ls">sistemas humanos</div></div>
+      </div>
+      <div class="htitle">Projeto de <span>Expansão Comercial</span></div>
+      <div class="hsub">Hub centralizado · Divisão geográfica · Financeiro · Operações · Marketing · Referências</div>
+    </div>
+    <div class="hbadges">
+      <span class="hb hb-sp">Interior SP</span>
+      <span class="hb hb-sul">Sul</span>
+      <span class="hb hb-ne">Nordeste</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="tab active" onclick="swTab('geo',this)">📍 Divisão geográfica</button>
+  <button class="tab" onclick="swTab('fin',this)">📊 Financeiro</button>
+  <button class="tab" onclick="swTab('op',this)">⚙️ Operações</button>
+  <button class="tab" onclick="swTab('mk',this)">📣 Marketing</button>
+  <button class="tab" onclick="swTab('ref',this)">📁 Referências</button>
+</nav>
+
+<!-- GEO -->
+<div class="sec active" id="tab-geo">
+
+  <!-- MAPA DE DIVISÕES REGIONAIS -->
+  <div style="margin-bottom:20px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div class="sec-lbl" style="margin-bottom:2px;">Divisão territorial HCM</div>
+        <div class="sec-ttl" style="margin-bottom:0;">Mapa de Sub-regionais</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;" id="map-legend-pills"></div>
+    </div>
+    <!-- MAP CONTAINER -->
+    <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1);">
+      <div id="hub-map" style="height:420px;width:100%;background:#0A1628;"></div>
+      <div id="hub-map-loader" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,22,40,.85);z-index:10;border-radius:10px;">
+        <div style="text-align:center;">
+          <div style="width:30px;height:30px;border:3px solid rgba(245,200,0,.15);border-top-color:#F5C800;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 8px;"></div>
+          <div id="hub-map-txt" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);">Carregando mapa...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="krow">
+    <div class="kpi"><div class="kl">Cidades analisadas</div><div class="kv">19</div><div class="ks">SP · Sul · Nordeste</div></div>
+    <div class="kpi"><div class="kl">Massa salarial total</div><div class="kv">R$ 374 Bi</div><div class="ks">estimativa anual</div></div>
+    <div class="kpi"><div class="kl">Empresas 100+</div><div class="kv">13.470</div><div class="ks">contas-alvo</div></div>
+    <div class="kpi"><div class="kl">Empregos formais</div><div class="kv">7,4 Mi</div></div>
+    <div class="kpi"><div class="kl">Líder HCM</div><div class="kv" style="font-size:18px;">Campinas</div><div class="ks">índice 100</div></div>
+  </div>
+  <div class="cg">
+    <div class="cc full">
+      <div class="ct">Índice de Potencial HCM — Top 15 territórios</div>
+      <div class="cs">Score normalizado (0–100) · ponderado por massa salarial, empresas-alvo, empregos formais e crescimento</div>
+      <div class="cw tall"><canvas id="cTop"></canvas></div>
+    </div>
+    <div class="cc">
+      <div class="ct">Empresas ICP 300–5k por região</div>
+      <div class="cs">Enterprise / mid-market HCM</div>
+      <div class="cw sm"><canvas id="cIcp"></canvas></div>
+    </div>
+    <div class="cc">
+      <div class="ct">Crescimento do emprego formal</div>
+      <div class="cs">Top 10 territórios · variação %</div>
+      <div class="cw"><canvas id="cGrow"></canvas></div>
+    </div>
+    <div class="cc full">
+      <div class="ct">Ranking completo — todos os territórios</div>
+      <div class="cs">Ordenado pelo índice HCM calculado · modelo ponderado por 5 indicadores</div>
+      <table class="rtbl">
+        <thead><tr><th>#</th><th>Cidade</th><th>Massa salarial</th><th>Emp. 100+</th><th>Emp. 300–5k</th><th>Crescimento</th><th>Índice HCM</th></tr></thead>
+        <tbody id="rb"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="sec-lbl">Notas territoriais</div>
+  <div class="sec-ttl">Adicionar análises por território</div>
+  <div id="geo-items"></div>
+  <button class="addb" onclick="sf('gf')">+ Adicionar nota de território</button>
+  <div id="gf" class="form-box hidden">
+    <div class="irow"><input id="g-t" placeholder="Território (ex: Campinas — oportunidades)"/><button onclick="ai('geo')">Salvar</button><button class="cn" onclick="hf('gf')">✕</button></div>
+    <div class="irow"><textarea id="g-d" rows="2" placeholder="Análise, contatos, observações estratégicas..."></textarea></div>
+    <div class="trow">
+      <span class="ut" style="background:rgba(245,200,0,.15);color:var(--sp);border-color:rgba(245,200,0,.3);" onclick="st2(this,'sp','Interior SP')">Interior SP</span>
+      <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);border-color:rgba(93,221,184,.3);" onclick="st2(this,'sul','Sul')">Sul</span>
+      <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);border-color:rgba(245,140,62,.3);" onclick="st2(this,'ne','Nordeste')">Nordeste</span>
+      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'g','Geral')">Geral</span>
+    </div>
+  </div>
+</div>
+
+<!-- FIN -->
+<div class="sec" id="tab-fin">
+  <div class="krow">
+    <div class="kpi"><div class="kl">Itens registrados</div><div class="kv" id="fc">0</div></div>
+    <div class="kpi"><div class="kl">Receita projetada</div><div class="kv">R$ —</div></div>
+    <div class="kpi"><div class="kl">Custo estimado</div><div class="kv">R$ —</div></div>
+    <div class="kpi"><div class="kl">Retorno estimado</div><div class="kv">— meses</div></div>
+  </div>
+  <div class="cc" style="margin-bottom:16px;">
+    <div class="ct" style="margin-bottom:12px;">Progresso das análises financeiras</div>
+    <div id="pbars"></div>
+  </div>
+  <div id="fin-items"></div>
+  <button class="addb" onclick="sf('ff')">+ Adicionar dado ou projeção</button>
+  <div id="ff" class="form-box hidden">
+    <div class="irow"><input id="f-t" placeholder="Título (ex: Projeção Q1 — Interior SP)"/><button onclick="ai('fin')">Salvar</button><button class="cn" onclick="hf('ff')">✕</button></div>
+    <div class="irow"><textarea id="f-d" rows="2" placeholder="Valores, premissas, fonte dos dados..."></textarea></div>
+    <div class="trow">
+      <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'receita','Receita')">Receita</span>
+      <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'custo','Custo')">Custo</span>
+      <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'proj','Projeção')">Projeção</span>
+      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'risco','Risco')">Risco</span>
+    </div>
+  </div>
+</div>
+
+<!-- OP -->
+<div class="sec" id="tab-op">
+  <div class="krow">
+    <div class="kpi"><div class="kl">Processos</div><div class="kv" id="oc">0</div></div>
+    <div class="kpi"><div class="kl">Em andamento</div><div class="kv" id="oa">0</div></div>
+    <div class="kpi"><div class="kl">Concluídos</div><div class="kv" id="od">0</div></div>
+  </div>
+  <div id="op-items"></div>
+  <button class="addb" onclick="sf('of')">+ Adicionar processo ou tarefa</button>
+  <div id="of" class="form-box hidden">
+    <div class="irow"><input id="o-t" placeholder="Título (ex: Estruturação equipe regional)"/><button onclick="ai('op')">Salvar</button><button class="cn" onclick="hf('of')">✕</button></div>
+    <div class="irow"><textarea id="o-d" rows="2" placeholder="Responsável, prazo, dependências..."></textarea></div>
+    <div class="trow">
+      <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'proc','Processo')">Processo</span>
+      <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'equipe','Equipe')">Equipe</span>
+      <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'infra','Infraestrutura')">Infraestrutura</span>
+      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'prazo','Prazo')">Prazo</span>
+    </div>
+  </div>
+</div>
+
+<!-- MK -->
+<div class="sec" id="tab-mk">
+  <div class="krow">
+    <div class="kpi"><div class="kl">Campanhas</div><div class="kv" id="mc">0</div></div>
+    <div class="kpi"><div class="kl">Canais digitais</div><div class="kv" id="md">0</div></div>
+    <div class="kpi"><div class="kl">Eventos</div><div class="kv" id="me">0</div></div>
+  </div>
+  <div id="mk-items"></div>
+  <button class="addb" onclick="sf('mf')">+ Adicionar campanha ou canal</button>
+  <div id="mf" class="form-box hidden">
+    <div class="irow"><input id="m-t" placeholder="Título (ex: LinkedIn Ads — Campinas B2B)"/><button onclick="ai('mk')">Salvar</button><button class="cn" onclick="hf('mf')">✕</button></div>
+    <div class="irow"><textarea id="m-d" rows="2" placeholder="Canal, público-alvo, mensagem, orçamento..."></textarea></div>
+    <div class="trow">
+      <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'digital','Canal digital')">Canal digital</span>
+      <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'evento','Evento')">Evento</span>
+      <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'cont','Conteúdo')">Conteúdo</span>
+      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'parc','Parceria')">Parceria</span>
+    </div>
+  </div>
+</div>
+
+<!-- REF -->
+<div class="sec" id="tab-ref">
+  <div class="krow">
+    <div class="kpi"><div class="kl">Referências salvas</div><div class="kv" id="rc2">0</div></div>
+    <div class="kpi"><div class="kl">Pesquisas</div><div class="kv" id="rp">0</div></div>
+    <div class="kpi"><div class="kl">Docs internos</div><div class="kv" id="rd">0</div></div>
+  </div>
+  <div class="sec-lbl" style="margin-bottom:6px;">Documentos carregados</div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+    <div style="background:var(--db);border:1px solid rgba(245,200,0,.3);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+      <div style="width:32px;height:32px;background:rgba(245,200,0,.15);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;">📊</div>
+      <div><div style="font-size:13px;font-weight:500;">Plano_Expansao_HCM_Territorios.xlsx</div><div style="font-size:10px;color:var(--mu);">19 cidades · 3 regiões · dados carregados nos gráficos</div></div>
+      <span class="ct2 tsp" style="margin-left:auto;">Ativo</span>
+    </div>
+    <div style="background:var(--db);border:1px solid rgba(245,200,0,.3);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+      <div style="width:32px;height:32px;background:rgba(245,200,0,.15);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;">📑</div>
+      <div><div style="font-size:13px;font-weight:500;">Apresentação_institucional_LG.pdf</div><div style="font-size:10px;color:var(--mu);">Identidade visual · Plataforma HCM · Jornadas · Clientes</div></div>
+      <span class="ct2 tsp" style="margin-left:auto;">Ativo</span>
+    </div>
+  </div>
+  <div id="ref-items"></div>
+  <button class="addb" onclick="sf('rf')">+ Adicionar referência</button>
+  <div id="rf" class="form-box hidden">
+    <div class="irow"><input id="r-t" placeholder="Título da referência"/><button onclick="addRef()">Salvar</button><button class="cn" onclick="hf('rf')">✕</button></div>
+    <div class="irow"><input id="r-u" placeholder="URL (opcional)"/></div>
+    <div class="irow"><textarea id="r-d" rows="2" placeholder="Notas ou descrição..."></textarea></div>
+    <div class="trow">
+      <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'pesq','Pesquisa')">Pesquisa</span>
+      <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'rel','Relatório')">Relatório</span>
+      <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'art','Artigo')">Artigo</span>
+      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'doc','Doc. interno')">Doc. interno</span>
+    </div>
+  </div>
+</div>
+
+<div class="ftr">
+  <p>LG lugar de gente · Projeto de Expansão Comercial HCM · Dados estimados para planejamento estratégico</p>
+  <p>Fontes: RAIS · Novo CAGED · IBGE · Receita Federal · DataSebrae</p>
+</div>
+
+<script>
+const ALL=[
+  {c:'Campinas',s:'SP',r:'sp',m:48,e:1800,f:950000,g:3.5,i:850},
+  {c:'São José dos Campos',s:'SP',r:'sp',m:32,e:1200,f:550000,g:2.8,i:620},
+  {c:'Sorocaba',s:'SP',r:'sp',m:29,e:1100,f:520000,g:4.1,i:580},
+  {c:'Jundiaí',s:'SP',r:'sp',m:24,e:900,f:420000,g:4.0,i:480},
+  {c:'Ribeirão Preto',s:'SP',r:'sp',m:22,e:850,f:420000,g:4.3,i:430},
+  {c:'Piracicaba',s:'SP',r:'sp',m:18,e:650,f:310000,g:3.0,i:330},
+  {c:'S.J. Rio Preto',s:'SP',r:'sp',m:17,e:600,f:290000,g:4.2,i:310},
+  {c:'Bauru',s:'SP',r:'sp',m:13,e:450,f:240000,g:2.7,i:220},
+  {c:'Limeira',s:'SP',r:'sp',m:12,e:420,f:220000,g:2.9,i:200},
+  {c:'Americana',s:'SP',r:'sp',m:11,e:380,f:200000,g:2.5,i:180},
+  {c:'Joinville',s:'SC',r:'sul',m:22,e:850,f:340000,g:4.5,i:420},
+  {c:'Caxias do Sul',s:'RS',r:'sul',m:20,e:780,f:310000,g:3.2,i:390},
+  {c:'Londrina',s:'PR',r:'sul',m:19,e:720,f:300000,g:3.8,i:360},
+  {c:'Maringá',s:'PR',r:'sul',m:18,e:680,f:280000,g:4.7,i:340},
+  {c:'Blumenau',s:'SC',r:'sul',m:17,e:620,f:250000,g:4.0,i:310},
+  {c:'Feira de Santana',s:'BA',r:'ne',m:14,e:520,f:240000,g:4.2,i:250},
+  {c:'Camaçari',s:'BA',r:'ne',m:13,e:480,f:180000,g:3.1,i:240},
+  {c:'Caruaru',s:'PE',r:'ne',m:10,e:400,f:170000,g:4.5,i:190},
+  {c:'Petrolina',s:'PE',r:'ne',m:9,e:350,f:150000,g:5.0,i:170},
+  {c:'Mossoró',s:'RN',r:'ne',m:8,e:320,f:130000,g:4.0,i:150},
+];
+function sc(d){return((0.3*(d.m/48))+(0.25*(d.e/1800))+(0.2*(d.f/950000))+(0.2*(d.i/850))+(0.05*(d.g/5)))*100;}
+const scored=ALL.map(d=>({...d,sc:sc(d)})).sort((a,b)=>b.sc-a.sc);
+function rc(r){return r==='sp'?'#F5C800':r==='sul'?'#5DDDB8':'#F58C3E';}
+const GRID='rgba(255,255,255,0.08)',MU='rgba(255,255,255,0.45)',WH='rgba(255,255,255,0.9)';
+const TT={backgroundColor:'#0D3F8F',borderColor:'rgba(255,255,255,0.2)',borderWidth:1,titleColor:'#fff',bodyColor:MU,padding:10,titleFont:{family:'Barlow Condensed',weight:'700',size:13}};
+const AX={grid:{color:GRID},ticks:{color:MU,font:{size:10}},border:{color:'transparent'}};
+
+window.addEventListener('DOMContentLoaded',()=>{
+  // TOP15
+  const t15=scored.slice(0,15);
+  new Chart(document.getElementById('cTop'),{type:'bar',
+    data:{labels:t15.map(d=>d.c),datasets:[{data:t15.map(d=>+d.sc.toFixed(1)),backgroundColor:t15.map(d=>rc(d.r)),borderRadius:5,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{...TT,callbacks:{label:ctx=>` Índice HCM: ${ctx.raw}`,afterLabel:ctx=>` ${t15[ctx.dataIndex].r==='sp'?'Interior SP':t15[ctx.dataIndex].r==='sul'?'Sul':'Nordeste'}`}}},
+      scales:{x:AX,y:{...AX}}}
+  });
+  // ICP
+  const iSP=ALL.filter(d=>d.r==='sp').reduce((s,d)=>s+d.i,0);
+  const iSul=ALL.filter(d=>d.r==='sul').reduce((s,d)=>s+d.i,0);
+  const iNE=ALL.filter(d=>d.r==='ne').reduce((s,d)=>s+d.i,0);
+  new Chart(document.getElementById('cIcp'),{type:'doughnut',
+    data:{labels:['Interior SP','Sul','Nordeste'],datasets:[{data:[iSP,iSul,iNE],backgroundColor:['#F5C800','#5DDDB8','#F58C3E'],borderWidth:0,hoverOffset:8}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',
+      plugins:{legend:{display:true,position:'bottom',labels:{color:WH,font:{size:11},padding:12,boxWidth:10}},
+      tooltip:{...TT,callbacks:{label:ctx=>` ${ctx.label}: ${ctx.raw.toLocaleString('pt-BR')} empresas`}}}}
+  });
+  // GROWTH
+  const gd=scored.slice(0,10);
+  new Chart(document.getElementById('cGrow'),{type:'bar',
+    data:{labels:gd.map(d=>d.c),datasets:[{data:gd.map(d=>d.g),backgroundColor:gd.map(d=>rc(d.r)),borderRadius:5,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{...TT,callbacks:{label:ctx=>` Crescimento: ${ctx.raw}%`}}},
+      scales:{x:AX,y:{...AX,ticks:{...AX.ticks,callback:v=>v+'%'}}}}
+  });
+  // TABLE
+  const rb=document.getElementById('rb');
+  scored.forEach((d,i)=>{
+    const rk=i+1,cls=rk===1?'r1':rk===2?'r2':rk===3?'r3':'ro',pct=(d.sc/scored[0].sc*100).toFixed(0),col=rc(d.r);
+    const tc=d.r==='sp'?'tsp':d.r==='sul'?'tsul':'tne';
+    rb.innerHTML+=`<tr>
+      <td><span class="rn ${cls}">${rk}</span></td>
+      <td><b style="font-weight:500;">${d.c}</b><span class="ct2 ${tc}">${d.s}</span></td>
+      <td>R$ ${d.m} Bi</td><td>${d.e.toLocaleString('pt-BR')}</td><td>${d.i.toLocaleString('pt-BR')}</td>
+      <td>${d.g}%</td>
+      <td><div class="sbw"><div class="sbb"><div class="sbf" style="width:${pct}%;background:${col};"></div></div><span class="sv" style="color:${col}">${d.sc.toFixed(0)}</span></div></td>
+    </tr>`;
+  });
+  // PROGRESS BARS
+  [{l:'Fluxo de caixa',p:30,c:'#F5C800'},{l:'Projeções de receita',p:10,c:'#5DDDB8'},{l:'Break-even',p:0,c:'#3B8FE8'},{l:'Custos de expansão',p:0,c:'#F58C3E'}].forEach(b=>{
+    const el=document.createElement('div');
+    el.style.cssText='display:flex;align-items:center;gap:10px;margin-bottom:8px;';
+    el.innerHTML=`<span style="font-size:11px;color:${MU};width:150px;flex-shrink:0;">${b.l}</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;"><div style="width:${b.p}%;height:100%;background:${b.c};border-radius:2px;"></div></div><span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:${b.c};min-width:30px;text-align:right;">${b.p}%</span>`;
+    document.getElementById('pbars').appendChild(el);
+  });
+});
+
+// STATE
+const ST={geo:[],fin:[],op:[],mk:[],refs:[]};
+let CUR={label:'Geral',key:'g',col:'rgba(255,255,255,0.7)'};
+const IDS={geo:{t:'g-t',d:'g-d',f:'gf',c:'geo-items'},fin:{t:'f-t',d:'f-d',f:'ff',c:'fin-items'},op:{t:'o-t',d:'o-d',f:'of',c:'op-items'},mk:{t:'m-t',d:'m-d',f:'mf',c:'mk-items'}};
+
+function swTab(id,btn){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
+function sf(id){document.getElementById(id).classList.remove('hidden');}
+function hf(id){document.getElementById(id).classList.add('hidden');}
+function st2(el,key,label){CUR={label,key,col:el.style.color||'#fff'};el.closest('.trow').querySelectorAll('.ut').forEach(t=>t.style.outline='none');el.style.outline='2px solid rgba(255,255,255,0.4)';}
+function tog(el){const b=el.nextElementSibling,ch=el.querySelector('.chv');b.classList.toggle('open');ch&&ch.classList.toggle('open');}
+function ai(sec){
+  const cfg=IDS[sec];const t=document.getElementById(cfg.t).value.trim();const d=document.getElementById(cfg.d).value.trim();
+  if(!t)return;ST[sec].push({t,d,tag:{...CUR}});ri(sec);document.getElementById(cfg.t).value='';document.getElementById(cfg.d).value='';hf(cfg.f);uc(sec);
+}
+function ri(sec){
+  const cfg=IDS[sec];
+  document.getElementById(cfg.c).innerHTML=ST[sec].map((item,i)=>`
+    <div class="blk"><div class="btit" onclick="tog(this)">
+      <span><span style="font-size:9px;padding:2px 7px;border-radius:999px;border:1px solid;margin-right:7px;color:${item.tag.col}">${item.tag.label}</span>${item.t}</span>
+      <span class="chv">▼</span></div>
+      <div class="bbody"><p>${item.d||'Sem descrição.'}</p>
+        <button onclick="rm('${sec}',${i})" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 9px;color:var(--mu);cursor:pointer;">Remover</button>
+      </div></div>`).join('');
+}
+function rm(sec,i){ST[sec].splice(i,1);ri(sec);uc(sec);}
+function uc(sec){
+  if(sec==='fin')document.getElementById('fc').textContent=ST.fin.length;
+  if(sec==='op'){document.getElementById('oc').textContent=ST.op.length;document.getElementById('oa').textContent=ST.op.length;}
+  if(sec==='mk'){document.getElementById('mc').textContent=ST.mk.length;document.getElementById('md').textContent=ST.mk.filter(i=>i.tag.key==='digital').length;document.getElementById('me').textContent=ST.mk.filter(i=>i.tag.key==='evento').length;}
+}
+function addRef(){
+  const t=document.getElementById('r-t').value.trim(),u=document.getElementById('r-u').value.trim(),d=document.getElementById('r-d').value.trim();
+  if(!t)return;ST.refs.push({t,u,d,tag:{...CUR}});
+  document.getElementById('ref-items').innerHTML=ST.refs.map((r,i)=>`
+    <div class="blk"><div class="btit" onclick="tog(this)">
+      <span><span style="font-size:9px;padding:2px 7px;border-radius:999px;border:1px solid;margin-right:7px;color:${r.tag.col}">${r.tag.label}</span>${r.t}</span>
+      <span class="chv">▼</span></div>
+      <div class="bbody">${r.u?`<p style="margin-bottom:5px;"><a href="${r.u}" style="color:var(--y);">${r.u}</a></p>`:''}
+        <p>${r.d||''}</p>
+        <button onclick="rmr(${i})" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 9px;color:var(--mu);cursor:pointer;">Remover</button>
+      </div></div>`).join('');
+  hf('rf');['r-t','r-u','r-d'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('rc2').textContent=ST.refs.length;
+  document.getElementById('rp').textContent=ST.refs.filter(i=>i.tag.key==='pesq').length;
+  document.getElementById('rd').textContent=ST.refs.filter(i=>i.tag.key==='doc').length;
+}
+function rmr(i){ST.refs.splice(i,1);document.getElementById('ref-items').innerHTML='';addRef&&(document.getElementById('rc2').textContent=ST.refs.length);}
+</script>
+<!-- LEAFLET FOR HUB MAP -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ── HUB MAP ────────────────────────────────────────────────────────────────
+const HUB_ZONES = {
+  'sp-1':{label:'Bauru / S.J. Rio Preto',   group:'SP', color:'#B8DCFF'},
+  'sp-2':{label:'Ribeirão Preto',             group:'SP', color:'#72B2E8'},
+  'sp-3':{label:'Piracicaba',                 group:'SP', color:'#2E86C8'},
+  'sp-4':{label:'Campinas',                   group:'SP', color:'#1360A0'},
+  'sp-5':{label:'Sorocaba',                   group:'SP', color:'#0A3F72'},
+  'sp-6':{label:'São José dos Campos',        group:'SP', color:'#041E3A'},
+  'sul-1':{label:'PR Norte (Londrina/Maringá)',group:'Sul', color:'#B8F0CC'},
+  'sul-2':{label:'PR Sul e demais',            group:'Sul', color:'#6DC98A'},
+  'sul-3':{label:'Santa Catarina',             group:'Sul', color:'#28A050'},
+  'sul-4':{label:'RS Serra Gaúcha',            group:'Sul', color:'#0E6E30'},
+  'sul-5':{label:'RS Demais regiões',          group:'Sul', color:'#053A18'},
+  'ne-1':{label:'MA · CE · RN · PI',           group:'NE',  color:'#FFAAAA'},
+  'ne-2':{label:'PB · AL · SE · PE',           group:'NE',  color:'#D04040'},
+  'ne-3':{label:'Bahia',                        group:'NE',  color:'#7A1010'},
+  'none':{label:'Sem sub-regional',            group:'',    color:'#0A1628'},
+};
+
+const HUB_MICRO_DEFAULT = {
+  35001:'sp-1',35002:'sp-1',35003:'sp-1',35004:'sp-1',35005:'sp-1',35006:'sp-1',35007:'sp-1',
+  35013:'sp-1',35014:'sp-1',35015:'sp-1',35016:'sp-1',35017:'sp-1',35018:'sp-1',35019:'sp-1',
+  35034:'sp-1',35035:'sp-1',35036:'sp-1',35037:'sp-1',35038:'sp-1',35039:'sp-1',
+  35040:'sp-1',35041:'sp-1',35042:'sp-1',35043:'sp-1',
+  35008:'sp-2',35009:'sp-2',35010:'sp-2',35011:'sp-2',35012:'sp-2',
+  35021:'sp-2',35022:'sp-2',35023:'sp-2',
+  35024:'sp-3',35025:'sp-3',35026:'sp-3',35027:'sp-3',
+  35028:'sp-3',35029:'sp-3',35033:'sp-3',
+  35030:'sp-4',35032:'sp-4',
+  35020:'sp-5',35044:'sp-5',35045:'sp-5',35046:'sp-5',
+  35047:'sp-5',35048:'sp-5',35060:'sp-5',35061:'sp-5',35062:'sp-5',
+  35031:'sp-6',35051:'sp-6',35052:'sp-6',35053:'sp-6',35054:'sp-6',
+};
+
+const HUB_STATE_DEFAULT = {
+  '41':'sul-2','42':'sul-3','43':'sul-5',
+  '21':'ne-1','22':'ne-1','23':'ne-1','24':'ne-1',
+  '25':'ne-2','26':'ne-2','27':'ne-2','28':'ne-2',
+  '29':'ne-3',
+};
+
+const HUB_OVERRIDES = {
+  '3500402':'sp-3','3501608':'sp-3','3503802':'sp-3','3505302':'sp-3','3512803':'sp-3',
+  '3514106':'sp-3','3515152':'sp-3','3515186':'sp-3','3520004':'sp-3','3522604':'sp-3',
+  '3525300':'sp-3','3529807':'sp-3','3530706':'sp-3','3530805':'sp-3','3538709':'sp-3',
+  '3541059':'sp-3','3544004':'sp-3','3545159':'sp-3','3545803':'sp-3','3548005':'sp-3',
+  '3548104':'sp-3','3549102':'sp-3','3550100':'sp-3','3557303':'sp-3',
+  '3500550':'sp-1','3500709':'sp-1','3503406':'sp-1','3503604':'sp-1','3504305':'sp-1',
+  '3504701':'sp-1','3505203':'sp-1','3506003':'sp-1','3506805':'sp-1','3507308':'sp-1',
+  '3507456':'sp-1','3508306':'sp-1','3514502':'sp-1','3518107':'sp-1','3519105':'sp-1',
+  '3519253':'sp-1','3522000':'sp-1','3522901':'sp-1','3526803':'sp-1','3527504':'sp-1',
+  '3528007':'sp-1','3536570':'sp-1','3536703':'sp-1','3538907':'sp-1','3539400':'sp-1',
+  '3540101':'sp-1','3541109':'sp-1','3542503':'sp-1','3555505':'sp-1','3555901':'sp-1',
+  '3500758':'sp-5','3502200':'sp-5','3502309':'sp-5','3503109':'sp-5','3504503':'sp-5',
+  '3505005':'sp-5','3506904':'sp-5','3507001':'sp-5','3507159':'sp-5','3507506':'sp-5',
+  '3508009':'sp-5','3509452':'sp-5','3511409':'sp-5','3511508':'sp-5','3511607':'sp-5',
+  '3512308':'sp-5','3512605':'sp-5','3515400':'sp-5','3518503':'sp-5','3521705':'sp-5',
+  '3521804':'sp-5','3522307':'sp-5','3522406':'sp-5','3522802':'sp-5','3523206':'sp-5',
+  '3523503':'sp-5','3526407':'sp-5','3532827':'sp-5','3535804':'sp-5','3536109':'sp-5',
+  '3537503':'sp-5','3538808':'sp-5','3540507':'sp-5','3541653':'sp-5','3543501':'sp-5',
+  '3551207':'sp-5','3553005':'sp-5','3553807':'sp-5','3553856':'sp-5','3554003':'sp-5',
+  '3554201':'sp-5','3554607':'sp-5','3554656':'sp-5',
+  '3501004':'sp-2','3503703':'sp-2','3505609':'sp-2','3505906':'sp-2','3506102':'sp-2',
+  '3507803':'sp-2','3508702':'sp-2','3509304':'sp-2','3509403':'sp-2','3510104':'sp-2',
+  '3510807':'sp-2','3510906':'sp-2','3511102':'sp-2','3511201':'sp-2','3513108':'sp-2',
+  '3513900':'sp-2','3514601':'sp-2','3514924':'sp-2','3514957':'sp-2','3515608':'sp-2',
+  '3518602':'sp-2','3518859':'sp-2','3519402':'sp-2','3523800':'sp-2','3524303':'sp-2',
+  '3525102':'sp-2','3527603':'sp-2','3530508':'sp-2','3531308':'sp-2','3531506':'sp-2',
+  '3533254':'sp-2','3533908':'sp-2','3535101':'sp-2','3535705':'sp-2','3538105':'sp-2',
+  '3539004':'sp-2','3539509':'sp-2','3540200':'sp-2','3540903':'sp-2','3543402':'sp-2',
+  '3545605':'sp-2','3546256':'sp-2','3546504':'sp-2','3547502':'sp-2','3547601':'sp-2',
+  '3547908':'sp-2','3549706':'sp-2','3550803':'sp-2','3550902':'sp-2','3551405':'sp-2',
+  '3551504':'sp-2','3551702':'sp-2','3551900':'sp-2','3552601':'sp-2','3553104':'sp-2',
+  '3553203':'sp-2','3553302':'sp-2','3553609':'sp-2','3553658':'sp-2','3553708':'sp-2',
+  '3554409':'sp-2','3556404':'sp-2','3556800':'sp-2','3556909':'sp-2',
+  '3501905':'sp-4','3504107':'sp-4','3507100':'sp-4','3507605':'sp-4','3509502':'sp-4',
+  '3509601':'sp-4','3519071':'sp-4','3520509':'sp-4','3523404':'sp-4','3524006':'sp-4',
+  '3525201':'sp-4','3525508':'sp-4','3525904':'sp-4','3527306':'sp-4','3531209':'sp-4',
+  '3531803':'sp-4','3532009':'sp-4','3532405':'sp-4','3536802':'sp-4','3538204':'sp-4',
+  '3538600':'sp-4','3552106':'sp-4','3552403':'sp-4','3554953':'sp-4','3556354':'sp-4',
+  '3556503':'sp-4','3556701':'sp-4',
+  '3503901':'sp-6','3506607':'sp-6','3508504':'sp-6','3509700':'sp-6','3518305':'sp-6',
+  '3518800':'sp-6','3520202':'sp-6','3523107':'sp-6','3524402':'sp-6','3530607':'sp-6',
+  '3531704':'sp-6','3538006':'sp-6','3545001':'sp-6','3546009':'sp-6','3546801':'sp-6',
+  '3548203':'sp-6','3548609':'sp-6','3549904':'sp-6','3552502':'sp-6','3554102':'sp-6',
+  '3554805':'sp-6',
+  '3513009':'none','3513801':'none','3515004':'none','3515103':'none','3522208':'none',
+  '3526209':'none','3529401':'none','3543303':'none','3544103':'none','3547809':'none',
+  '3548708':'none','3548807':'none','3549953':'none','3550308':'none',
+  '4100103':'sul-1','4100608':'sul-1','4100806':'sul-1','4100905':'sul-1','4101101':'sul-1',
+  '4101150':'sul-1','4101408':'sul-1','4101507':'sul-1','4101606':'sul-1','4101903':'sul-1',
+  '4102109':'sul-1','4102208':'sul-1','4102406':'sul-1','4102703':'sul-1','4102802':'sul-1',
+  '4103206':'sul-1','4103305':'sul-1','4103404':'sul-1','4103503':'sul-1','4103602':'sul-1',
+  '4103701':'sul-1','4103800':'sul-1','4104709':'sul-1','4105102':'sul-1','4105508':'sul-1',
+  '4105904':'sul-1','4106001':'sul-1','4106100':'sul-1','4106407':'sul-1','4106704':'sul-1',
+  '4106852':'sul-1','4107009':'sul-1','4107108':'sul-1','4107306':'sul-1','4107504':'sul-1',
+  '4107603':'sul-1','4107702':'sul-1','4107751':'sul-1','4107801':'sul-1','4107900':'sul-1',
+  '4108007':'sul-1','4108106':'sul-1','4108908':'sul-1','4109005':'sul-1','4109203':'sul-1',
+  '4109708':'sul-1','4109807':'sul-1','4110003':'sul-1','4110300':'sul-1','4110409':'sul-1',
+  '4110904':'sul-1','4111001':'sul-1','4111100':'sul-1','4111308':'sul-1','4111605':'sul-1',
+  '4111704':'sul-1','4111803':'sul-1','4111902':'sul-1','4112009':'sul-1','4112108':'sul-1',
+  '4112306':'sul-1','4112405':'sul-1','4112603':'sul-1','4112702':'sul-1','4112801':'sul-1',
+  '4112900':'sul-1','4113007':'sul-1','4113106':'sul-1','4113403':'sul-1','4113502':'sul-1',
+  '4113601':'sul-1','4113700':'sul-1','4113809':'sul-1','4114104':'sul-1','4114203':'sul-1',
+  '4114807':'sul-1','4114906':'sul-1','4115002':'sul-1','4115200':'sul-1','4115507':'sul-1',
+  '4115754':'sul-1','4115903':'sul-1','4116000':'sul-1','4116307':'sul-1','4116406':'sul-1',
+  '4116505':'sul-1','4116604':'sul-1','4116901':'sul-1','4117008':'sul-1','4117107':'sul-1',
+  '4117214':'sul-1','4117297':'sul-1','4117305':'sul-1','4117404':'sul-1','4117503':'sul-1',
+  '4118006':'sul-1','4118105':'sul-1','4118303':'sul-1','4118402':'sul-1','4119202':'sul-1',
+  '4119400':'sul-1','4119657':'sul-1','4119707':'sul-1','4120002':'sul-1','4120200':'sul-1',
+  '4120333':'sul-1','4120408':'sul-1','4120507':'sul-1','4120705':'sul-1','4121000':'sul-1',
+  '4121109':'sul-1','4121307':'sul-1','4121802':'sul-1','4121901':'sul-1','4122107':'sul-1',
+  '4122404':'sul-1','4122602':'sul-1','4122701':'sul-1','4122909':'sul-1','4123105':'sul-1',
+  '4123204':'sul-1','4123303':'sul-1','4123402':'sul-1','4123600':'sul-1','4123709':'sul-1',
+  '4123907':'sul-1','4123956':'sul-1','4124004':'sul-1','4124103':'sul-1','4124202':'sul-1',
+  '4124301':'sul-1','4124509':'sul-1','4124608':'sul-1','4124707':'sul-1','4124905':'sul-1',
+  '4125001':'sul-1','4125308':'sul-1','4125407':'sul-1','4125555':'sul-1','4125803':'sul-1',
+  '4125902':'sul-1','4126009':'sul-1','4126108':'sul-1','4126207':'sul-1','4126256':'sul-1',
+  '4126306':'sul-1','4126405':'sul-1','4126504':'sul-1','4126603':'sul-1','4126678':'sul-1',
+  '4126702':'sul-1','4127106':'sul-1','4127205':'sul-1','4127304':'sul-1','4127809':'sul-1',
+  '4128302':'sul-1','4128401':'sul-1','4128500':'sul-1','4128534':'sul-1',
+  '4101002':'sul-2','4102604':'sul-2','4102752':'sul-2','4103024':'sul-2','4103040':'sul-2',
+  '4103156':'sul-2','4103222':'sul-2','4103958':'sul-2','4104428':'sul-2','4104451':'sul-2',
+  '4104501':'sul-2','4105409':'sul-2','4105706':'sul-2','4106456':'sul-2','4106506':'sul-2',
+  '4106571':'sul-2','4106902':'sul-2','4107207':'sul-2','4107405':'sul-2','4107546':'sul-2',
+  '4107850':'sul-2','4108403':'sul-2','4108452':'sul-2','4108650':'sul-2','4109401':'sul-2',
+  '4109658':'sul-2','4110201':'sul-2','4111209':'sul-2','4113254':'sul-2','4113304':'sul-2',
+  '4114351':'sul-2','4114401':'sul-2','4115309':'sul-2','4115408':'sul-2','4115457':'sul-2',
+  '4115739':'sul-2','4116950':'sul-2','4117057':'sul-2','4117255':'sul-2','4117602':'sul-2',
+  '4117800':'sul-2','4118501':'sul-2','4119004':'sul-2','4119251':'sul-2','4119301':'sul-2',
+  '4119608':'sul-2','4119806':'sul-2','4120150':'sul-2','4120358':'sul-2','4120606':'sul-2',
+  '4120903':'sul-2','4121406':'sul-2','4121604':'sul-2','4121752':'sul-2','4122156':'sul-2',
+  '4122800':'sul-2','4123006':'sul-2','4123808':'sul-2','4123857':'sul-2','4124400':'sul-2',
+  '4124806':'sul-2','4125209':'sul-2','4125506':'sul-2','4126272':'sul-2','4126652':'sul-2',
+  '4127965':'sul-2','4128609':'sul-2','4128658':'sul-2','4128708':'sul-2',
+  '4300570':'sul-4','4300661':'sul-4','4300703':'sul-4','4300802':'sul-4','4301008':'sul-4',
+  '4301651':'sul-4','4302105':'sul-4','4302253':'sul-4','4302303':'sul-4','4302352':'sul-4',
+  '4303608':'sul-4','4303673':'sul-4','4304408':'sul-4','4304697':'sul-4','4304804':'sul-4',
+  '4305108':'sul-4','4305587':'sul-4','4305835':'sul-4','4305934':'sul-4','4305959':'sul-4',
+  '4306205':'sul-4','4306452':'sul-4','4306759':'sul-4','4306809':'sul-4','4307807':'sul-4',
+  '4307864':'sul-4','4307906':'sul-4','4308102':'sul-4','4308201':'sul-4','4308607':'sul-4',
+  '4309100':'sul-4','4309258':'sul-4','4309407':'sul-4','4309902':'sul-4','4310363':'sul-4',
+  '4310439':'sul-4','4311122':'sul-4','4311304':'sul-4','4311643':'sul-4','4312377':'sul-4',
+  '4312385':'sul-4','4312609':'sul-4','4312617':'sul-4','4312906':'sul-4','4313003':'sul-4',
+  '4313086':'sul-4','4313201':'sul-4','4313300':'sul-4','4313359':'sul-4','4314423':'sul-4',
+  '4314548':'sul-4','4314753':'sul-4','4315172':'sul-4','4315206':'sul-4','4315453':'sul-4',
+  '4315800':'sul-4','4316501':'sul-4','4316956':'sul-4','4317251':'sul-4','4318200':'sul-4',
+  '4318440':'sul-4','4318622':'sul-4','4319000':'sul-4','4319356':'sul-4','4319711':'sul-4',
+  '4319752':'sul-4','4320404':'sul-4','4321451':'sul-4','4321709':'sul-4','4322251':'sul-4',
+  '4322509':'sul-4','4322541':'sul-4','4322806':'sul-4','4322855':'sul-4','4323309':'sul-4',
+  '4323606':'sul-4','4323770':'sul-4',
+  '4300109':'sul-5','4302907':'sul-5','4304655':'sul-5','4306379':'sul-5','4306700':'sul-5',
+  '4308003':'sul-5','4308409':'sul-5','4310538':'sul-5','4310553':'sul-5','4310751':'sul-5',
+  '4311106':'sul-5','4311130':'sul-5','4311205':'sul-5','4312104':'sul-5','4313037':'sul-5',
+  '4313102':'sul-5','4314472':'sul-5','4315321':'sul-5','4315503':'sul-5','4316907':'sul-5',
+  '4316972':'sul-5','4317400':'sul-5','4318432':'sul-5','4319125':'sul-5','4319406':'sul-5',
+  '4319604':'sul-5','4319802':'sul-5','4320651':'sul-5','4321493':'sul-5','4322202':'sul-5',
+  '4322376':'sul-5','4323457':'sul-5',
+};
+
+let hubMapLoaded = false;
+let hubMunMicro = {};
+
+function setHubLoader(t){document.getElementById('hub-map-txt').textContent=t;}
+function hideHubLoader(){document.getElementById('hub-map-loader').style.display='none';}
+
+function hubZoneStyle(zone){
+  const z = HUB_ZONES[zone]||HUB_ZONES['none'];
+  return {fillColor:z.color, fillOpacity:.75, color:'rgba(255,255,255,.15)', weight:.5, smoothFactor:1};
+}
+
+async function initHubMap(){
+  if(hubMapLoaded) return;
+  hubMapLoaded = true;
+
+  const hubMap = L.map('hub-map',{center:[-18,-50],zoom:5,zoomControl:true,attributionControl:false,scrollWheelZoom:true});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18,subdomains:'abcd'}).addTo(hubMap);
+
+  const BASE='https://servicodados.ibge.gov.br/api/v3/malhas';
+  const Q='?formato=application/vnd.geo%2Bjson&qualidade=minima';
+
+  async function fg(url){const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}
+
+  // SP municipalities lookup
+  try{
+    setHubLoader('Carregando SP...');
+    const loc=await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios?view=nivelado').then(r=>r.json());
+    loc.forEach(m=>{
+      const munId=String(m['municipio-id']||'');
+      const microId=parseInt(m['microrregiao-id']||0);
+      if(munId&&microId) hubMunMicro[munId]=microId;
+    });
+    const spGJ=await fg(`${BASE}/estados/35${Q}&intrarregiao=municipio`);
+    spGJ.features.forEach(f=>{
+      const cod=String(f.properties.codarea||'');
+      const zone=HUB_OVERRIDES[cod]||HUB_MICRO_DEFAULT[hubMunMicro[cod]]||'none';
+      if(zone==='none')return;
+      L.geoJSON(f,{style:hubZoneStyle(zone)}).bindTooltip(f.properties.nome||cod,{sticky:true,className:'hub-map-tt',direction:'top'}).addTo(hubMap);
+    });
+  }catch(e){console.warn('SP hub map error:',e);}
+
+  // Sul + NE states
+  const states=[['41','sul-2'],['42','sul-3'],['43','sul-5'],
+                ['21','ne-1'],['22','ne-1'],['23','ne-1'],['24','ne-1'],
+                ['25','ne-2'],['26','ne-2'],['27','ne-2'],['28','ne-2'],['29','ne-3']];
+  for(const [uf,base] of states){
+    setHubLoader(`Carregando estado ${uf}...`);
+    try{
+      const gj=await fg(`${BASE}/estados/${uf}${Q}&intrarregiao=municipio`);
+      gj.features.forEach(f=>{
+        const cod=String(f.properties.codarea||'');
+        const zone=HUB_OVERRIDES[cod]||base;
+        L.geoJSON(f,{style:hubZoneStyle(zone)}).bindTooltip(f.properties.nome||cod,{sticky:true,className:'hub-map-tt',direction:'top'}).addTo(hubMap);
+      });
+    }catch(e){console.warn('Error state',uf,e);}
+  }
+
+  // Legend pills
+  const pills=document.getElementById('map-legend-pills');
+  const groups=[
+    {label:'SP',zones:['sp-1','sp-2','sp-3','sp-4','sp-5','sp-6']},
+    {label:'Sul',zones:['sul-1','sul-2','sul-3','sul-4','sul-5']},
+    {label:'NE',zones:['ne-1','ne-2','ne-3']},
+  ];
+  groups.forEach(g=>{
+    g.zones.forEach(z=>{
+      const info=HUB_ZONES[z];
+      const pill=document.createElement('div');
+      pill.style.cssText=`display:flex;align-items:center;gap:4px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);`;
+      pill.innerHTML=`<div style="width:10px;height:10px;border-radius:2px;background:${info.color};flex-shrink:0;"></div>${info.label}`;
+      pills.appendChild(pill);
+    });
+  });
+
+  hideHubLoader();
+}
+
+// Init map when geo tab is first shown
+const _origSwTab = typeof swTab === 'function' ? swTab : null;
+function swTab(id,btn){
+  if(_origSwTab) _origSwTab(id,btn);
+  else{
+    document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    btn.classList.add('active');
+  }
+  if(id==='geo') setTimeout(initHubMap, 100);
+}
+
+// Also init on page load since geo is the default tab
+document.addEventListener('DOMContentLoaded', ()=>setTimeout(initHubMap, 500));
+</script>
+<style>
+.hub-map-tt{background:rgba(8,18,36,.9) !important;border:1px solid rgba(245,200,0,.45) !important;border-radius:4px !important;padding:2px 6px !important;font-family:'Barlow Condensed',sans-serif !important;font-size:10px !important;font-weight:700 !important;color:#fff !important;white-space:nowrap !important;box-shadow:none !important;}
+.leaflet-tooltip.hub-map-tt::before{display:none !important;}
+</style>
+</body>
+</html>
