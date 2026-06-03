@@ -107,7 +107,7 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
         <div class="lt"><div class="ln">lugar de gente</div><div class="ls">sistemas humanos</div></div>
       </div>
       <div class="htitle">Projeto de <span>Expansão Comercial</span></div>
-      <div class="hsub">Hub centralizado · Divisão geográfica · Financeiro · Operações · Marketing · Referências</div>
+      <div class="hsub">Hub centralizado · Divisão geográfica · Estratégia de negócio · Operações · Marketing · Referências</div>
     </div>
     <div class="hbadges">
       <span class="hb hb-sp">Interior SP</span>
@@ -119,7 +119,8 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
 
 <nav class="nav">
   <button class="tab active" onclick="swTab('geo',this)">📍 Divisão geográfica</button>
-  <button class="tab" onclick="swTab('fin',this)">📊 Financeiro</button>
+  <button class="tab" onclick="swTab('playbook',this)">📋 Playbook</button>
+  <button class="tab" onclick="swTab('fin',this)">💡 Estratégia de negócio</button>
   <button class="tab" onclick="swTab('op',this)">⚙️ Operações</button>
   <button class="tab" onclick="swTab('mk',this)">📣 Marketing</button>
   <button class="tab" onclick="swTab('ref',this)">📁 Referências</button>
@@ -149,6 +150,39 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
     </div>
   </div>
 
+
+  <!-- TABELA DE ALOCAÇÃO DE PESSOAS -->
+  <div style="margin-top:20px;">
+    <div class="sec-lbl" style="margin-bottom:4px;">Estrutura de pessoas</div>
+    <div class="sec-ttl" style="margin-bottom:14px;">Alocação por cidade — 28 pessoas · 13 cidades</div>
+    <div style="background:var(--db);border:1px solid var(--brd);border-radius:10px;overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05);">
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Macrorregião</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Cidade</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Tipo</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Gerente</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Executivo</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">BDR</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Arq. Soluções</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:center;border-bottom:1px solid var(--brd);">Total</th>
+          </tr>
+        </thead>
+        <tbody id="alloc-table-body"></tbody>
+        <tfoot>
+          <tr style="background:rgba(245,200,0,.06);border-top:1px solid rgba(245,200,0,.3);">
+            <td colspan="3" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--y);padding:10px 14px;">Total Geral</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">3</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">13</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">6</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">6</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 14px;">28</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
   <div class="krow">
     <div class="kpi"><div class="kl">Cidades analisadas</div><div class="kv">19</div><div class="ks">SP · Sul · Nordeste</div></div>
     <div class="kpi"><div class="kl">Massa salarial total</div><div class="kv">R$ 374 Bi</div><div class="ks">estimativa anual</div></div>
@@ -198,6 +232,17 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
 </div>
 
 <!-- FIN -->
+
+<!-- PLAYBOOK -->
+<div class="sec" id="tab-playbook" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+  <iframe
+    src="https://playbook-play-magic.lovable.app/expansao"
+    style="width:100%;flex:1;border:none;display:block;min-height:600px;"
+    allow="fullscreen"
+    title="Playbook HCM — LG lugar de gente"
+  ></iframe>
+</div>
+
 <div class="sec" id="tab-fin">
   <div class="krow">
     <div class="kpi"><div class="kl">Itens registrados</div><div class="kv" id="fc">0</div></div>
@@ -389,7 +434,13 @@ const ST={geo:[],fin:[],op:[],mk:[],refs:[]};
 let CUR={label:'Geral',key:'g',col:'rgba(255,255,255,0.7)'};
 const IDS={geo:{t:'g-t',d:'g-d',f:'gf',c:'geo-items'},fin:{t:'f-t',d:'f-d',f:'ff',c:'fin-items'},op:{t:'o-t',d:'o-d',f:'of',c:'op-items'},mk:{t:'m-t',d:'m-d',f:'mf',c:'mk-items'}};
 
-function swTab(id,btn){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
+function swTab(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='geo') setTimeout(initHubMap, 100);
+}
 function sf(id){document.getElementById(id).classList.remove('hidden');}
 function hf(id){document.getElementById(id).classList.add('hidden');}
 function st2(el,key,label){CUR={label,key,col:el.style.color||'#fff'};el.closest('.trow').querySelectorAll('.ut').forEach(t=>t.style.outline='none');el.style.outline='2px solid rgba(255,255,255,0.4)';}
@@ -437,6 +488,46 @@ function rmr(i){ST.refs.splice(i,1);document.getElementById('ref-items').innerHT
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 // ── HUB MAP ────────────────────────────────────────────────────────────────
+
+const HUB_ALLOC = {
+  'Campinas':           {lat:-22.909,lng:-47.063,tipo:'Sede',         total:6, regiao:'SP-Interior',detail:'1× Gerente · 1× Exec · 2× BDR · 2× Arq.Soluções'},
+  'Piracicaba':         {lat:-22.725,lng:-47.649,tipo:'Filial/remoto',total:1, regiao:'SP-Interior',detail:'1× Executivo comercial'},
+  'São José dos Campos':{lat:-23.179,lng:-45.887,tipo:'Filial/remoto',total:1, regiao:'SP-Interior',detail:'1× Executivo comercial'},
+  'Sorocaba':           {lat:-23.502,lng:-47.453,tipo:'Filial/remoto',total:1, regiao:'SP-Interior',detail:'1× Executivo comercial'},
+  'Ribeirão Preto':     {lat:-21.177,lng:-47.810,tipo:'Filial/remoto',total:1, regiao:'SP-Interior',detail:'1× Executivo comercial'},
+  'Londrina':           {lat:-23.305,lng:-51.170,tipo:'Filial/remoto',total:1, regiao:'Sul',         detail:'1× Executivo comercial'},
+  'Curitiba':           {lat:-25.429,lng:-49.271,tipo:'Filial/remoto',total:2, regiao:'Sul',         detail:'1× Executivo · 1× Arq.Soluções'},
+  'Joinville':          {lat:-26.304,lng:-48.849,tipo:'Filial/remoto',total:1, regiao:'Sul',         detail:'1× Executivo comercial'},
+  'Porto Alegre':       {lat:-30.034,lng:-51.218,tipo:'Sede',         total:5, regiao:'Sul',         detail:'1× Gerente · 1× Exec · 2× BDR · 1× Arq.Soluções'},
+  'Caxias do Sul':      {lat:-29.168,lng:-51.179,tipo:'Filial/remoto',total:1, regiao:'Sul',         detail:'1× Executivo comercial'},
+  'Salvador':           {lat:-12.971,lng:-38.501,tipo:'Sede',         total:6, regiao:'Nordeste',    detail:'1× Gerente · 2× Exec · 2× BDR · 1× Arq.Soluções'},
+  'Recife':             {lat:-8.054, lng:-34.881,tipo:'Filial/remoto',total:1, regiao:'Nordeste',    detail:'1× Executivo comercial'},
+  'Fortaleza':          {lat:-3.717, lng:-38.543,tipo:'Filial/remoto',total:1, regiao:'Nordeste',    detail:'1× Executivo comercial'},
+};
+
+const HUB_STUDY = [
+  {name:'Campinas',          lat:-22.909,lng:-47.063,rank:1},
+  {name:'S.José dos Campos', lat:-23.179,lng:-45.887,rank:2},
+  {name:'Sorocaba',          lat:-23.502,lng:-47.453,rank:3},
+  {name:'Jundiaí',           lat:-23.186,lng:-46.898,rank:4},
+  {name:'Ribeirão Preto',    lat:-21.177,lng:-47.810,rank:5},
+  {name:'Piracicaba',        lat:-22.725,lng:-47.649,rank:6},
+  {name:'S.J. Rio Preto',    lat:-20.820,lng:-49.379,rank:7},
+  {name:'Bauru',             lat:-22.325,lng:-49.078,rank:8},
+  {name:'Limeira',           lat:-22.565,lng:-47.402,rank:9},
+  {name:'Americana',         lat:-22.739,lng:-47.332,rank:10},
+  {name:'Joinville',         lat:-26.304,lng:-48.849,rank:11},
+  {name:'Caxias do Sul',     lat:-29.168,lng:-51.179,rank:12},
+  {name:'Londrina',          lat:-23.305,lng:-51.170,rank:13},
+  {name:'Maringá',           lat:-23.427,lng:-51.938,rank:14},
+  {name:'Blumenau',          lat:-26.919,lng:-49.066,rank:15},
+  {name:'Feira de Santana',  lat:-12.266,lng:-38.966,rank:16},
+  {name:'Camaçari',          lat:-12.700,lng:-38.325,rank:17},
+  {name:'Caruaru',           lat:-8.276, lng:-35.976,rank:18},
+  {name:'Petrolina',         lat:-9.389, lng:-40.502,rank:19},
+  {name:'Mossoró',           lat:-5.188, lng:-37.344,rank:20},
+];
+
 const HUB_ZONES = {
   'sp-1':{label:'Bauru / S.J. Rio Preto',   group:'SP', color:'#B8DCFF'},
   'sp-2':{label:'Ribeirão Preto',             group:'SP', color:'#72B2E8'},
@@ -670,28 +761,244 @@ async function initHubMap(){
     });
   });
 
+  // Marcadores das 19 cidades do estudo
+  HUB_STUDY.forEach(c => {
+    const top5 = c.rank <= 5, sz = top5 ? 13 : 8;
+    const glow = top5 ? 'box-shadow:0 0 0 3px rgba(245,200,0,.4),0 0 8px rgba(245,200,0,.5);' : 'box-shadow:0 0 0 2px rgba(245,200,0,.2);';
+    const icon = L.divIcon({className:'',html:`<div style="width:${sz}px;height:${sz}px;background:#F5C800;border:2px solid #fff;border-radius:50%;${glow}"></div>`,iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]});
+    L.marker([c.lat,c.lng],{icon,zIndexOffset:500}).bindTooltip(`<b>${c.name}</b> <span style="color:#F5C800;">#${c.rank}</span>`,{sticky:true,className:'hub-map-tt',direction:'top'}).addTo(hubMap);
+    L.tooltip({permanent:true,direction:'right',offset:[top5?8:5,0],className:'hub-city-lbl'}).setContent(c.name).setLatLng([c.lat,c.lng]).addTo(hubMap);
+  });
+  // Marcadores de alocação
+  const rCol={'SP-Interior':'#60A0FF','Sul':'#60E090','Nordeste':'#FF7070'};
+  Object.entries(HUB_ALLOC).forEach(([nome,info]) => {
+    const col = rCol[info.regiao]||'#aaa', isSede = info.tipo==='Sede', sz = isSede?30:20;
+    const icon = L.divIcon({className:'',html:`<div style="width:${sz}px;height:${sz}px;background:${col};border:${isSede?3:2}px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:${isSede?12:10}px;font-weight:900;color:#0A1628;box-shadow:0 0 0 ${isSede?4:2}px ${col}44,0 2px 8px rgba(0,0,0,.5);">${info.total}</div>`,iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]});
+    L.marker([info.lat,info.lng],{icon,zIndexOffset:2000}).bindTooltip(`<b>${isSede?'🏢':'👤'} ${nome}</b><br><span style="color:${col};">${info.tipo} · ${info.regiao}</span><br><span style="color:#F5C800;font-weight:800;">${info.total} pessoa${info.total>1?'s':''}</span><br><span style="opacity:.7;font-size:10px;">${info.detail}</span>`,{sticky:true,className:'hub-map-tt',direction:'top'}).addTo(hubMap);
+  });
   hideHubLoader();
 }
 
-// Init map when geo tab is first shown
-const _origSwTab = typeof swTab === 'function' ? swTab : null;
-function swTab(id,btn){
-  if(_origSwTab) _origSwTab(id,btn);
-  else{
-    document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-    document.getElementById('tab-'+id).classList.add('active');
-    btn.classList.add('active');
-  }
-  if(id==='geo') setTimeout(initHubMap, 100);
-}
-
-// Also init on page load since geo is the default tab
+// Init map on page load since geo is the default tab
 document.addEventListener('DOMContentLoaded', ()=>setTimeout(initHubMap, 500));
 </script>
 <style>
+.hub-city-lbl{background:transparent !important;border:none !important;box-shadow:none !important;font-family:'Barlow Condensed',sans-serif !important;font-size:10px !important;font-weight:700 !important;color:#fff !important;text-shadow:0 1px 3px #000,0 0 5px #000 !important;white-space:nowrap !important;pointer-events:none !important;}
+.leaflet-tooltip.hub-city-lbl::before{display:none !important;}
 .hub-map-tt{background:rgba(8,18,36,.9) !important;border:1px solid rgba(245,200,0,.45) !important;border-radius:4px !important;padding:2px 6px !important;font-family:'Barlow Condensed',sans-serif !important;font-size:10px !important;font-weight:700 !important;color:#fff !important;white-space:nowrap !important;box-shadow:none !important;}
 .leaflet-tooltip.hub-map-tt::before{display:none !important;}
 </style>
+
+<script>
+(function(){
+  const rows = [
+    {reg:'SP-Interior',cidade:'Campinas - SP',     tipo:'Sede',          col:'#60A0FF',gerente:1,exec:1,bdr:2,arq:2,total:6},
+    {reg:'SP-Interior',cidade:'Piracicaba - SP',   tipo:'Filial/remoto', col:'#60A0FF',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'SP-Interior',cidade:'Sorocaba - SP',     tipo:'Filial/remoto', col:'#60A0FF',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'SP-Interior',cidade:'Ribeirão Preto - SP',tipo:'Filial/remoto',col:'#60A0FF',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'SP-Interior',cidade:'S.José dos Campos - SP',tipo:'Filial/remoto',col:'#60A0FF',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'Sul',         cidade:'Porto Alegre - RS', tipo:'Sede',          col:'#60E090',gerente:1,exec:1,bdr:2,arq:1,total:5},
+    {reg:'Sul',         cidade:'Curitiba - PR',     tipo:'Filial/remoto', col:'#60E090',gerente:0,exec:1,bdr:0,arq:1,total:2},
+    {reg:'Sul',         cidade:'Londrina - PR',     tipo:'Filial/remoto', col:'#60E090',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'Sul',         cidade:'Joinville - SC',    tipo:'Filial/remoto', col:'#60E090',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'Sul',         cidade:'Caxias do Sul - RS',tipo:'Filial/remoto', col:'#60E090',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'Nordeste',    cidade:'Salvador - BA',     tipo:'Sede',          col:'#FF7070',gerente:1,exec:2,bdr:2,arq:1,total:6},
+    {reg:'Nordeste',    cidade:'Recife - PE',       tipo:'Filial/remoto', col:'#FF7070',gerente:0,exec:1,bdr:0,arq:0,total:1},
+    {reg:'Nordeste',    cidade:'Fortaleza - CE',    tipo:'Filial/remoto', col:'#FF7070',gerente:0,exec:1,bdr:0,arq:0,total:1},
+  ];
+  const tbody = document.getElementById('alloc-table-body');
+  if(!tbody) return;
+  let lastReg = '';
+  rows.forEach((r,i) => {
+    const isNew = r.reg !== lastReg;
+    lastReg = r.reg;
+    const isSede = r.tipo === 'Sede';
+    const bg = i%2===0 ? 'rgba(255,255,255,.02)' : 'transparent';
+    const regBg = isNew ? `background:${r.col}18;` : '';
+    const cell = (v, center) => `<td style="padding:9px ${center?'6':'14'}px;font-size:12px;color:rgba(255,255,255,.75);border-bottom:1px solid rgba(255,255,255,.05);text-align:${center?'center':'left'};">${v||'—'}</td>`;
+    const numCell = (v) => `<td style="padding:9px 6px;font-size:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:${v?'rgba(255,255,255,.85)':'rgba(255,255,255,.2)'};border-bottom:1px solid rgba(255,255,255,.05);text-align:center;">${v||'—'}</td>`;
+    tbody.innerHTML += `<tr style="${bg}${regBg}">
+      <td style="padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.05);">
+        ${isNew?`<span style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:4px;background:${r.col}22;color:${r.col};">${r.reg}</span>`:''}
+      </td>
+      <td style="padding:9px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.05);">${r.cidade}</td>
+      <td style="padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.05);">
+        <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em;background:${isSede?'rgba(245,200,0,.15)':'rgba(255,255,255,.06)'};color:${isSede?'#F5C800':'rgba(255,255,255,.5)'};">${r.tipo}</span>
+      </td>
+      ${numCell(r.gerente)}${numCell(r.exec)}${numCell(r.bdr)}${numCell(r.arq)}
+      <td style="padding:9px 14px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:${r.col};border-bottom:1px solid rgba(255,255,255,.05);">${r.total}</td>
+    </tr>`;
+  });
+})();
+</script>
+
+// ── PLAYBOOK ───────────────────────────────────────────────────────────────
+const pbState = [];
+function addPb(){
+  const t=document.getElementById('pb-t').value.trim();
+  const d=document.getElementById('pb-d').value.trim();
+  if(!t)return;
+  pbState.push({t,d,tag:{...CUR},date:new Date().toLocaleDateString('pt-BR')});
+  renderPb();
+  document.getElementById('pb-t').value='';
+  document.getElementById('pb-d').value='';
+  hf('pbf');
+  updPbCounters();
+}
+function renderPb(){
+  const el=document.getElementById('pb-items');
+  el.innerHTML=pbState.map((item,i)=>`
+    <div class="blk">
+      <div class="btit" onclick="tog(this)">
+        <span><span style="font-size:9px;padding:2px 7px;border-radius:999px;border:1px solid;margin-right:7px;color:${item.tag.col||'#fff'};border-color:${item.tag.col||'rgba(255,255,255,.2)'};">${item.tag.label||'Doc'}</span>${item.t}</span>
+        <span style="font-size:9px;color:rgba(255,255,255,.3);margin-right:8px;">${item.date}</span>
+        <span class="chv">▼</span>
+      </div>
+      <div class="bbody">
+        <p style="white-space:pre-wrap;">${item.d||'Sem descrição.'}</p>
+        <button onclick="pbState.splice(${i},1);renderPb();updPbCounters();" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 9px;color:rgba(255,255,255,.4);cursor:pointer;">Remover</button>
+      </div>
+    </div>`).join('');
+}
+function updPbCounters(){
+  document.getElementById('pb-docs').textContent=pbState.length;
+  document.getElementById('pb-proc').textContent=pbState.filter(i=>i.tag.key==='processo').length;
+  document.getElementById('pb-tmpl').textContent=pbState.filter(i=>i.tag.key==='template').length;
+  if(pbState.length) document.getElementById('pb-date').textContent=pbState[pbState.length-1].date;
+}
+
+
+<style>
+#auth-overlay{
+  position:fixed;inset:0;z-index:99999;
+  background:#0A1628;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow',sans-serif;
+}
+.auth-box{
+  background:#0D1F3C;
+  border:1px solid rgba(245,200,0,.25);
+  border-radius:14px;
+  padding:40px 44px;
+  width:100%;max-width:380px;
+  text-align:center;
+  box-shadow:0 24px 64px rgba(0,0,0,.6);
+}
+.auth-logo{
+  width:44px;height:44px;background:#F5C800;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;
+  color:#0D3F8F;margin:0 auto 16px;
+}
+.auth-title{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:20px;text-transform:uppercase;letter-spacing:.04em;
+  color:#fff;margin-bottom:4px;
+}
+.auth-sub{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:28px;}
+.auth-input{
+  width:100%;padding:12px 16px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;color:#fff;
+  font-family:'Barlow',sans-serif;font-size:14px;
+  outline:none;margin-bottom:12px;
+  transition:border-color .2s;
+  box-sizing:border-box;
+  letter-spacing:.1em;
+}
+.auth-input:focus{border-color:rgba(245,200,0,.5);}
+.auth-input::placeholder{color:rgba(255,255,255,.25);letter-spacing:.05em;}
+.auth-btn{
+  width:100%;padding:12px;
+  background:#F5C800;color:#0D3F8F;
+  border:none;border-radius:8px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:14px;letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;transition:background .15s;margin-bottom:10px;
+}
+.auth-btn:hover{background:#FFD83A;}
+.auth-error{
+  font-size:12px;color:#FF7070;
+  margin-top:8px;min-height:18px;
+  transition:opacity .2s;
+}
+.auth-footer{
+  font-size:10px;color:rgba(255,255,255,.2);
+  margin-top:20px;letter-spacing:.06em;
+}
+</style>
+
+<div id="auth-overlay">
+  <div class="auth-box">
+    <div class="auth-logo">LG</div>
+    <div class="auth-title">Plano de Expansão HCM</div>
+    <div class="auth-sub">LG lugar de gente · Acesso restrito</div>
+    <input
+      class="auth-input"
+      id="auth-pass"
+      type="password"
+      placeholder="Digite a senha de acesso"
+      onkeydown="if(event.key==='Enter')checkAuth()"
+      autocomplete="off"
+    />
+    <button class="auth-btn" onclick="checkAuth()">Acessar →</button>
+    <div class="auth-error" id="auth-error"></div>
+    <div class="auth-footer">LG lugar de gente · Sistemas Humanos</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ── CONFIGURAÇÃO DE ACESSO ──────────────────────────────────────────────
+  // Para alterar a senha, troque o valor abaixo
+  // Para múltiplos usuários, adicione mais entradas ao objeto USERS
+  const USERS = {
+    'expansao2025': 'Diretoria',
+    'lg@hcm2025':   'Comercial',
+    'preview2025':  'Visitante',
+  };
+
+  const SESSION_KEY = 'lg_hub_auth';
+  const SESSION_HOURS = 8; // horas de sessão ativa
+
+  function isSessionValid(){
+    try {
+      const s = JSON.parse(sessionStorage.getItem(SESSION_KEY)||'{}');
+      if(!s.ts || !s.user) return false;
+      return (Date.now() - s.ts) < SESSION_HOURS * 3600000;
+    } catch(e){ return false; }
+  }
+
+  function unlock(){
+    document.getElementById('auth-overlay').style.display='none';
+  }
+
+  // Verificar sessão existente
+  if(isSessionValid()){
+    unlock();
+    return;
+  }
+
+  window.checkAuth = function(){
+    const pass = document.getElementById('auth-pass').value.trim();
+    const errEl = document.getElementById('auth-error');
+    if(USERS[pass]){
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({ts:Date.now(), user:USERS[pass]}));
+      document.getElementById('auth-overlay').style.animation='fadeOut .3s ease forwards';
+      setTimeout(unlock, 300);
+    } else {
+      errEl.textContent = 'Senha incorreta. Tente novamente.';
+      document.getElementById('auth-pass').value='';
+      document.getElementById('auth-pass').focus();
+      setTimeout(()=>errEl.textContent='', 3000);
+    }
+  };
+})();
+</script>
+<style>
+@keyframes fadeOut{to{opacity:0;transform:scale(.97);}}
+</style>
+
 </body>
 </html>
