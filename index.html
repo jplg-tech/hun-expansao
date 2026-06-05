@@ -9,91 +9,100 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --db:#0D3F8F;--mb:#1A63C6;--y:#F5C800;--w:#fff;
-  --mu:rgba(255,255,255,.55);--brd:rgba(255,255,255,.12);--cd:rgba(255,255,255,.07);
-  --sp:#F5C800;--sul:#5DDDB8;--ne:#F58C3E;
+  --db:#0D3F8F;   /* azul principal LG */
+  --mb:#F0F4FA;   /* fundo das seções — azul gelo muito suave */
+  --y:#F5C800;    /* amarelo LG */
+  --w:#fff;
+  --text:#0D2A5E;          /* texto principal — azul escuro */
+  --text2:#3A5A9A;         /* texto secundário — azul médio */
+  --text3:#6B84B0;         /* texto terciário */
+  --mu:rgba(13,42,94,.5);  /* muted — azul suave */
+  --brd:rgba(13,63,143,.12); /* bordas */
+  --cd:rgba(13,63,143,.05);  /* card background */
+  --sp:#F5C800;--sul:#0E9E68;--ne:#D44000;
 }
-body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:100vh;}
-/* HEADER */
+body{font-family:'Barlow',sans-serif;background:#F5F7FB;color:var(--text);min-height:100vh;}
+/* HEADER — mantém azul LG */
 .hdr{background:var(--db);padding:18px 28px 0;border-bottom:2px solid var(--y);}
 .logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
 .lm{width:36px;height:36px;background:var(--y);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;color:var(--db);}
 .lt{line-height:1.1;}
-.ln{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;}
-.ls{font-size:9px;color:var(--mu);letter-spacing:.08em;text-transform:uppercase;}
+.ln{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#fff;}
+.ls{font-size:9px;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;}
 .htop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;}
-.htitle{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,3vw,28px);text-transform:uppercase;letter-spacing:.01em;}
+.htitle{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,3vw,28px);text-transform:uppercase;letter-spacing:.01em;color:#fff;}
 .htitle span{color:var(--y);font-style:italic;}
-.hsub{font-size:12px;color:var(--mu);margin-top:4px;margin-bottom:16px;}
+.hsub{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px;margin-bottom:16px;}
 .hbadges{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
 .hb{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid;}
 .hb-sp{border-color:var(--sp);color:var(--sp);}
-.hb-sul{border-color:var(--sul);color:var(--sul);}
-.hb-ne{border-color:var(--ne);color:var(--ne);}
-/* NAV */
-.nav{display:flex;background:var(--db);border-bottom:1px solid var(--brd);overflow-x:auto;}
-.tab{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:14px 18px;cursor:pointer;color:var(--mu);border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;transition:color .2s,border-color .2s;}
+.hb-sul{border-color:#5DDDB8;color:#5DDDB8;}
+.hb-ne{border-color:#F58C3E;color:#F58C3E;}
+/* NAV — azul LG */
+.nav{display:flex;background:var(--db);border-bottom:1px solid rgba(255,255,255,.12);overflow-x:auto;}
+.tab{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:14px 18px;cursor:pointer;color:rgba(255,255,255,.55);border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;transition:color .2s,border-color .2s;}
 .tab:hover{color:#fff;}
 .tab.active{color:var(--y);border-bottom-color:var(--y);}
 /* SECTIONS */
-.sec{display:none;padding:24px 28px;}
+.sec{display:none;padding:24px 28px;background:#F5F7FB;}
 .sec.active{display:block;}
+#tab-playbook.active{padding:0;overflow:hidden;}
 /* KPI */
 .krow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--brd);border-radius:10px;overflow:hidden;border:1px solid var(--brd);margin-bottom:22px;}
-.kpi{background:var(--db);padding:16px 14px;}
-.kl{font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--mu);margin-bottom:6px;}
-.kv{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;line-height:1;color:var(--y);}
-.ks{font-size:10px;color:var(--mu);margin-top:3px;}
+.kpi{background:#fff;padding:16px 14px;}
+.kl{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.kv{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;line-height:1;color:var(--db);}
+.ks{font-size:10px;color:var(--text3);margin-top:3px;}
 /* CHARTS */
 .cg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
-.cc{background:var(--db);border:1px solid var(--brd);border-radius:10px;padding:20px;}
+.cc{background:#fff;border:1px solid var(--brd);border-radius:10px;padding:20px;}
 .cc.full{grid-column:1/-1;}
-.ct{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
-.cs{font-size:11px;color:var(--mu);margin-bottom:14px;}
+.ct{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;color:var(--text);}
+.cs{font-size:11px;color:var(--text3);margin-bottom:14px;}
 .cw{position:relative;height:240px;}
 .cw.tall{height:300px;}
 .cw.sm{height:220px;}
 /* TABLE */
 .rtbl{width:100%;border-collapse:collapse;}
-.rtbl th{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);padding:8px 10px;text-align:left;border-bottom:1px solid var(--brd);}
-.rtbl td{padding:11px 10px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle;}
+.rtbl th{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);padding:8px 10px;text-align:left;border-bottom:1px solid var(--brd);}
+.rtbl td{padding:11px 10px;font-size:12px;border-bottom:1px solid rgba(13,63,143,.06);vertical-align:middle;color:var(--text);}
 .rtbl tr:last-child td{border-bottom:none;}
-.rtbl tr:hover td{background:var(--cd);}
+.rtbl tr:hover td{background:rgba(13,63,143,.03);}
 .rn{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;}
 .r1{background:var(--y);color:var(--db);}
-.r2{background:rgba(245,200,0,.2);color:var(--y);}
-.r3{background:rgba(245,200,0,.1);color:var(--y);}
-.ro{background:rgba(255,255,255,.07);color:var(--mu);}
+.r2{background:rgba(245,200,0,.2);color:#8A6E00;}
+.r3{background:rgba(245,200,0,.1);color:#8A6E00;}
+.ro{background:rgba(13,63,143,.07);color:var(--text3);}
 .ct2{font-size:8px;font-weight:700;letter-spacing:.07em;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
-.tsp{background:rgba(245,200,0,.15);color:var(--sp);}
-.tsul{background:rgba(93,221,184,.15);color:var(--sul);}
-.tne{background:rgba(245,140,62,.15);color:var(--ne);}
+.tsp{background:rgba(245,200,0,.15);color:#7A5E00;}
+.tsul{background:rgba(14,158,104,.12);color:#0E6E30;}
+.tne{background:rgba(212,64,0,.1);color:#A03000;}
 .sbw{display:flex;align-items:center;gap:8px;}
-.sbb{flex:1;height:3px;background:rgba(255,255,255,.1);border-radius:2px;min-width:60px;}
+.sbb{flex:1;height:3px;background:rgba(13,63,143,.08);border-radius:2px;min-width:60px;}
 .sbf{height:100%;border-radius:2px;}
 .sv{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;min-width:28px;text-align:right;}
 /* ADD UI */
-.addb{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);border:1px dashed rgba(255,255,255,.2);border-radius:8px;padding:9px 14px;width:100%;cursor:pointer;background:transparent;text-align:left;margin-top:8px;}
-.addb:hover{background:var(--cd);color:#fff;}
-.blk{background:var(--cd);border:1px solid var(--brd);border-radius:9px;padding:14px;margin-bottom:10px;}
-.btit{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
-.bbody{display:none;padding-top:10px;border-top:1px solid var(--brd);margin-top:10px;font-size:12px;color:var(--mu);line-height:1.6;}
+.addb{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);border:1px dashed rgba(13,63,143,.25);border-radius:8px;padding:9px 14px;width:100%;cursor:pointer;background:transparent;text-align:left;margin-top:8px;}
+.addb:hover{background:rgba(13,63,143,.04);color:var(--db);}
+.blk{background:#fff;border:1px solid var(--brd);border-radius:9px;padding:14px;margin-bottom:10px;}
+.btit{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;justify-content:space-between;cursor:pointer;color:var(--text);}
+.bbody{display:none;padding-top:10px;border-top:1px solid var(--brd);margin-top:10px;font-size:12px;color:var(--text2);line-height:1.6;}
 .bbody.open{display:block;}
 .irow{display:flex;gap:8px;margin-bottom:8px;}
-.irow input,.irow textarea{flex:1;font-size:12px;font-family:'Barlow',sans-serif;border:1px solid var(--brd);border-radius:7px;padding:7px 10px;background:rgba(255,255,255,.07);color:#fff;}
-.irow input::placeholder,.irow textarea::placeholder{color:var(--mu);}
+.irow input,.irow textarea{flex:1;font-size:12px;font-family:'Barlow',sans-serif;border:1px solid var(--brd);border-radius:7px;padding:7px 10px;background:#fff;color:var(--text);}
+.irow input::placeholder,.irow textarea::placeholder{color:var(--text3);}
 .irow button{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.05em;padding:7px 14px;border-radius:7px;border:1px solid var(--brd);background:var(--y);color:var(--db);cursor:pointer;white-space:nowrap;}
-.irow button.cn{background:transparent;color:var(--mu);}
+.irow button.cn{background:transparent;color:var(--text3);border-color:var(--brd);}
 .trow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
 .ut{font-size:10px;font-weight:600;padding:3px 9px;border-radius:999px;cursor:pointer;border:1px solid transparent;}
-.form-box{margin-top:8px;background:var(--cd);border:1px solid var(--brd);border-radius:9px;padding:16px;}
-.sec-lbl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);margin-bottom:4px;}
-.sec-ttl{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;margin-bottom:16px;}
-.chv{font-size:11px;color:var(--mu);transition:transform .2s;}
+.form-box{margin-top:8px;background:rgba(13,63,143,.03);border:1px solid var(--brd);border-radius:9px;padding:16px;}
+.sec-lbl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
+.sec-ttl{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;margin-bottom:16px;color:var(--text);}
+.chv{font-size:11px;color:var(--text3);transition:transform .2s;}
 .chv.open{transform:rotate(180deg);}
 .hidden{display:none;}
-.ftr{padding:14px 28px;border-top:1px solid var(--brd);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;background:var(--db);}
-.ftr p{font-size:10px;color:var(--mu);}
+.ftr{padding:14px 28px;border-top:1px solid var(--brd);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;background:#fff;}
+.ftr p{font-size:10px;color:var(--text3);}
 @media(max-width:640px){.cg{grid-template-columns:1fr;}.cc.full{grid-column:1;}.hdr,.nav,.sec,.ftr{padding-left:16px;padding-right:16px;}}
 </style>
 </head>
@@ -118,7 +127,8 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
 </div>
 
 <nav class="nav">
-  <button class="tab active" onclick="swTab('geo',this)">📍 Divisão geográfica</button>
+  <button class="tab active" onclick="swTab('mkt-data',this)">📊 Dados de Mercado</button>
+  <button class="tab" onclick="swTab('geo',this)">📍 Divisão geográfica</button>
   <button class="tab" onclick="swTab('playbook',this)">📋 Playbook</button>
   <button class="tab" onclick="swTab('fin',this)">💡 Estratégia de negócio</button>
   <button class="tab" onclick="swTab('op',this)">⚙️ Operações</button>
@@ -127,7 +137,7 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
 </nav>
 
 <!-- GEO -->
-<div class="sec active" id="tab-geo">
+<div class="sec" id="tab-geo">
 
   <!-- MAPA DE DIVISÕES REGIONAIS -->
   <div style="margin-bottom:20px;">
@@ -139,12 +149,12 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
       <div style="display:flex;gap:6px;flex-wrap:wrap;" id="map-legend-pills"></div>
     </div>
     <!-- MAP CONTAINER -->
-    <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1);">
+    <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--brd);">
       <div id="hub-map" style="height:420px;width:100%;background:#0A1628;"></div>
       <div id="hub-map-loader" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,22,40,.85);z-index:10;border-radius:10px;">
         <div style="text-align:center;">
           <div style="width:30px;height:30px;border:3px solid rgba(245,200,0,.15);border-top-color:#F5C800;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 8px;"></div>
-          <div id="hub-map-txt" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);">Carregando mapa...</div>
+          <div id="hub-map-txt" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);">Carregando mapa...</div>
         </div>
       </div>
     </div>
@@ -155,29 +165,29 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
   <div style="margin-top:20px;">
     <div class="sec-lbl" style="margin-bottom:4px;">Estrutura de pessoas</div>
     <div class="sec-ttl" style="margin-bottom:14px;">Alocação por cidade — 28 pessoas · 13 cidades</div>
-    <div style="background:var(--db);border:1px solid var(--brd);border-radius:10px;overflow:hidden;">
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;overflow:hidden;">
       <table style="width:100%;border-collapse:collapse;">
         <thead>
-          <tr style="background:rgba(255,255,255,.05);">
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Macrorregião</th>
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Cidade</th>
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Tipo</th>
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Gerente</th>
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Executivo</th>
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">BDR</th>
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Arq. Soluções</th>
-            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:10px 14px;text-align:center;border-bottom:1px solid var(--brd);">Total</th>
+          <tr style="background:rgba(13,63,143,.04);">
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Macrorregião</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Cidade</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Tipo</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Gerente</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Executivo</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">BDR</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 6px;text-align:center;border-bottom:1px solid var(--brd);">Arq. Soluções</th>
+            <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 14px;text-align:center;border-bottom:1px solid var(--brd);">Total</th>
           </tr>
         </thead>
         <tbody id="alloc-table-body"></tbody>
         <tfoot>
-          <tr style="background:rgba(245,200,0,.06);border-top:1px solid rgba(245,200,0,.3);">
-            <td colspan="3" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--y);padding:10px 14px;">Total Geral</td>
-            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">3</td>
-            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">13</td>
-            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">6</td>
-            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 6px;">6</td>
-            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:10px 14px;">28</td>
+          <tr style="background:rgba(245,200,0,.08);border-top:1px solid rgba(245,200,0,.4);">
+            <td colspan="3" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--db);font-weight:800;padding:10px 14px;">Total Geral</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--db);font-weight:800;padding:10px 6px;">3</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--db);font-weight:800;padding:10px 6px;">13</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--db);font-weight:800;padding:10px 6px;">6</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--db);font-weight:800;padding:10px 6px;">6</td>
+            <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--db);font-weight:800;padding:10px 14px;">28</td>
           </tr>
         </tfoot>
       </table>
@@ -226,7 +236,7 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
       <span class="ut" style="background:rgba(245,200,0,.15);color:var(--sp);border-color:rgba(245,200,0,.3);" onclick="st2(this,'sp','Interior SP')">Interior SP</span>
       <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);border-color:rgba(93,221,184,.3);" onclick="st2(this,'sul','Sul')">Sul</span>
       <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);border-color:rgba(245,140,62,.3);" onclick="st2(this,'ne','Nordeste')">Nordeste</span>
-      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'g','Geral')">Geral</span>
+      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--mu);" onclick="st2(this,'g','Geral')">Geral</span>
     </div>
   </div>
 </div>
@@ -234,13 +244,441 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
 <!-- FIN -->
 
 <!-- PLAYBOOK -->
-<div class="sec" id="tab-playbook" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+<div class="sec" id="tab-playbook" style="padding:0;overflow:hidden;">
   <iframe
     src="https://playbook-play-magic.lovable.app/expansao"
-    style="width:100%;flex:1;border:none;display:block;min-height:600px;"
+    style="width:100%;height:calc(100vh - 130px);min-height:500px;border:none;display:block;"
     allow="fullscreen"
     title="Playbook HCM — LG lugar de gente"
   ></iframe>
+</div>
+
+<!-- DADOS DE MERCADO -->
+<div class="sec active" id="tab-mkt-data">
+
+  <!-- KPIs gerais -->
+  <div class="krow">
+    <div class="kpi"><div class="kl">Empresas ICP</div><div class="kv">6.557</div></div>
+    <div class="kpi"><div class="kl">Clientes LG ativos</div><div class="kv" style="color:#F5C800;">139</div></div>
+    <div class="kpi"><div class="kl">Market Share (colabs)</div><div class="kv" style="color:#F5C800;">7,1%</div></div>
+    <div class="kpi"><div class="kl">Potencial MRR</div><div class="kv" style="color:#5DDDB8;">R$ 91,4 Mi</div></div>
+    <div class="kpi"><div class="kl">Total Decisores</div><div class="kv">295.918</div></div>
+    <div class="kpi"><div class="kl">Total Colaboradores</div><div class="kv">6.146.850</div></div>
+  </div>
+
+  <!-- PDFs DO ESTUDO ECONODATA -->
+  <div class="sec-lbl">Estudos Econodata</div>
+  <div class="sec-ttl" style="margin-bottom:14px;">Relatórios completos por região</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:24px;" id="pdf-viewers">
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;overflow:hidden;">
+      <div style="background:rgba(14,128,64,.08);border-bottom:1px solid var(--brd);padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:14px;">🟢</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#0E8040;">Potencial — Região Sul</span>
+      </div>
+      <div style="padding:14px;font-size:12px;color:var(--text2);line-height:1.7;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+          <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas ICP</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">2.769</div></div>
+          <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Colaboradores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">244.251</div></div>
+          <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Decisores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">130.117</div></div>
+          <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Estados</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">PR · RS · SC</div></div>
+        </div>
+        <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;">Top cidades: Curitiba (390) · Porto Alegre (272) · Florianópolis (113) · Joinville (93) · Londrina (78)</div>
+        <div style="font-size:11px;color:var(--text3);">Top setores: Indústrias da transformação · Manufatura · Serviços · Bancário · Alimentos</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text3);">Alta atividade: <strong style="color:#0E8040;">2.655</strong> empresas · LinkedIn: 2.128 · Site: 2.365</div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;overflow:hidden;">
+      <div style="background:rgba(196,48,0,.07);border-bottom:1px solid var(--brd);padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:14px;">🔴</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#C43000;">Potencial — Região Nordeste</span>
+      </div>
+      <div style="padding:14px;font-size:12px;color:var(--text2);line-height:1.7;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+          <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas ICP</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">1.627</div></div>
+          <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Colaboradores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">119.025</div></div>
+          <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Decisores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">64.656</div></div>
+          <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Estados</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">9 estados</div></div>
+        </div>
+        <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;">Top cidades: Fortaleza (249) · Recife (209) · Salvador (161) · São Luís (64) · Maceió (45)</div>
+        <div style="font-size:11px;color:var(--text3);">Top setores: Serviços (443) · Manufatura (317) · Construção (248) · Alimentos (178)</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text3);">Alta atividade: <strong style="color:#C43000;">1.525</strong> empresas · LinkedIn: 1.128 · Site: 1.235</div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;overflow:hidden;">
+      <div style="background:rgba(19,96,160,.07);border-bottom:1px solid var(--brd);padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:14px;">🔵</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#1360A0;">Potencial — SP Interior</span>
+      </div>
+      <div style="padding:14px;font-size:12px;color:var(--text2);line-height:1.7;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+          <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas ICP</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">2.161</div></div>
+          <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Colaboradores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">196.617</div></div>
+          <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Decisores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">101.145</div></div>
+          <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Estado</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">SP</div></div>
+        </div>
+        <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;">Top cidades: Campinas (192) · Sorocaba (91) · Ribeirão Preto (88) · Jundiaí (82) · Piracicaba (61)</div>
+        <div style="font-size:11px;color:var(--text3);">Top setores: Indústrias da transformação (855) · Serviços (409) · Alimentos (274) · Construção (224)</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text3);">Alta atividade: <strong style="color:#1360A0;">2.050</strong> empresas · LinkedIn: 1.609 · Site: 1.816</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKET SHARE LG -->
+  <div class="sec-lbl" style="margin-top:4px;">Market share LG lugar de gente</div>
+  <div class="sec-ttl" style="margin-bottom:14px;">Base de dados — potencial de mercado HCM</div>
+
+  <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;overflow:hidden;margin-bottom:24px;">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr style="background:rgba(13,63,143,.03);">
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--brd);">Meso Região</th>
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 8px;text-align:center;border-bottom:1px solid var(--brd);">Empresas ICP</th>
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 8px;text-align:center;border-bottom:1px solid var(--brd);">Unidades</th>
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 8px;text-align:center;border-bottom:1px solid var(--brd);">Colaboradores</th>
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F5C800;padding:10px 8px;text-align:center;border-bottom:1px solid var(--brd);">Clientes LG</th>
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F5C800;padding:10px 8px;text-align:center;border-bottom:1px solid var(--brd);">Colabs LG</th>
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F5C800;padding:10px 8px;text-align:center;border-bottom:1px solid var(--brd);">Share %</th>
+          <th style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(93,221,184,.8);padding:10px 14px;text-align:right;border-bottom:1px solid var(--brd);">Potencial MRR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(255,120,120,.1);">
+          <td style="padding:11px 14px;"><span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;padding:3px 10px;border-radius:4px;background:rgba(255,112,112,.12);color:#FF7070;">Nordeste</span></td>
+          <td style="text-align:center;font-size:12px;color:var(--text);padding:11px 8px;">568</td>
+          <td style="text-align:center;font-size:12px;color:var(--text);padding:11px 8px;">1.627</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--text);padding:11px 8px;">1.559.900</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#F5C800;padding:11px 8px;">56</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:#F5C800;padding:11px 8px;">212.307</td>
+          <td style="text-align:center;padding:11px 8px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#FF7070;">13,6%</span>
+            <div style="margin-top:3px;height:4px;background:rgba(13,63,143,.05);border-radius:2px;"><div style="width:13.6%;height:100%;background:#FF7070;border-radius:2px;"></div></div>
+          </td>
+          <td style="text-align:right;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#5DDDB8;padding:11px 14px;">R$ 21,6 Mi</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(96,160,255,.1);">
+          <td style="padding:11px 14px;"><span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;padding:3px 10px;border-radius:4px;background:rgba(96,160,255,.12);color:#60A0FF;">SP Interior</span></td>
+          <td style="text-align:center;font-size:12px;color:var(--text);padding:11px 8px;">899</td>
+          <td style="text-align:center;font-size:12px;color:var(--text);padding:11px 8px;">2.161</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--text);padding:11px 8px;">2.188.150</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#F5C800;padding:11px 8px;">39</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:#F5C800;padding:11px 8px;">119.297</td>
+          <td style="text-align:center;padding:11px 8px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#60A0FF;">5,5%</span>
+            <div style="margin-top:3px;height:4px;background:rgba(13,63,143,.05);border-radius:2px;"><div style="width:5.5%;height:100%;background:#60A0FF;border-radius:2px;"></div></div>
+          </td>
+          <td style="text-align:right;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#5DDDB8;padding:11px 14px;">R$ 33,1 Mi</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(96,224,144,.1);">
+          <td style="padding:11px 14px;"><span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;padding:3px 10px;border-radius:4px;background:rgba(96,224,144,.12);color:#60E090;">Sul</span></td>
+          <td style="text-align:center;font-size:12px;color:var(--text);padding:11px 8px;">877</td>
+          <td style="text-align:center;font-size:12px;color:var(--text);padding:11px 8px;">2.769</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--text);padding:11px 8px;">2.398.800</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#F5C800;padding:11px 8px;">44</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:#F5C800;padding:11px 8px;">103.308</td>
+          <td style="text-align:center;padding:11px 8px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#60E090;">4,3%</span>
+            <div style="margin-top:3px;height:4px;background:rgba(13,63,143,.05);border-radius:2px;"><div style="width:4.3%;height:100%;background:#60E090;border-radius:2px;"></div></div>
+          </td>
+          <td style="text-align:right;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#5DDDB8;padding:11px 14px;">R$ 36,7 Mi</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr style="background:rgba(245,200,0,.08);border-top:1px solid rgba(245,200,0,.4);">
+          <td style="padding:12px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--y);">Total Geral</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:12px 8px;">2.344</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:12px 8px;">6.557</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:12px 8px;">6.146.850</td>
+          
+          
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--y);padding:12px 8px;">139</td>
+          <td style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--y);padding:12px 8px;">434.912</td>
+          <td style="text-align:center;padding:12px 8px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--y);">7,1%</span>
+            <div style="margin-top:3px;height:4px;background:rgba(13,63,143,.07);border-radius:2px;"><div style="width:7.1%;height:100%;background:#F5C800;border-radius:2px;"></div></div>
+          </td>
+          <td style="text-align:right;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:#5DDDB8;padding:12px 14px;">R$ 91,4 Mi</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- GRÁFICOS AGRUPADOS -->
+  <div class="sec-lbl" style="margin-top:4px;">Quantificação visual</div>
+  <div class="sec-ttl" style="margin-bottom:16px;">Mercado · Share LG · Potencial</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;padding:18px 20px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;">Empresas</div>
+      <div style="font-size:11px;color:var(--text3);margin-bottom:12px;">Mercado total · Share LG · Potencial por região</div>
+      <div style="position:relative;height:220px;"><canvas id="chart-emp-grouped"></canvas></div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;padding:18px 20px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;">MRR Potencial (R$ Mi)</div>
+      <div style="font-size:11px;color:var(--text3);margin-bottom:12px;">Colaboradores × R$16 · Share LG · Potencial por região</div>
+      <div style="position:relative;height:220px;"><canvas id="chart-mrr-grouped"></canvas></div>
+    </div>
+  </div>
+
+  <!-- FILTROS APLICADOS -->
+  <div style="background:rgba(245,200,0,.06);border:1px solid rgba(245,200,0,.3);border-radius:10px;padding:14px 18px;margin-bottom:20px;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F5C800;margin-bottom:10px;">Filtros do potencial de mercado aplicados</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);">
+        <span style="color:var(--db);font-weight:700;flex-shrink:0;">1.</span>Segmentação por <strong style="color:var(--db);">Meso Região</strong>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);">
+        <span style="color:var(--db);font-weight:700;flex-shrink:0;">2.</span><strong style="color:var(--db);">Exclusão:</strong> Artes, Políticas e Contabilidades
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);">
+        <span style="color:var(--db);font-weight:700;flex-shrink:0;">3.</span>Faturamento <strong style="color:var(--db);">acima de R$ 30 milhões</strong>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);">
+        <span style="color:var(--db);font-weight:700;flex-shrink:0;">4.</span>Funcionários <strong style="color:var(--db);">&gt; 300</strong>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);">
+        <span style="color:var(--db);font-weight:700;flex-shrink:0;">5.</span><strong style="color:var(--db);">Soma</strong> de Matriz + Filial
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);">
+        <span style="color:var(--db);font-weight:700;flex-shrink:0;">6.</span><strong style="color:var(--db);">Exclusão:</strong> Órgão Público e OS
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);">
+        <span style="color:var(--db);font-weight:700;flex-shrink:0;">7.</span>Somente empresas com <strong style="color:var(--db);">matriz na região</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRÁFICOS COMPARATIVOS -->
+  <div class="sec-lbl">Visão consolidada</div>
+  <div class="sec-ttl" style="margin-bottom:16px;">Potencial por macrorregião</div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:24px;">
+
+    <!-- Empresas ICP -->
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;padding:16px 18px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Empresas ICP</div>
+      <div id="chart-empresas"></div>
+    </div>
+
+    <!-- Decisores -->
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;padding:16px 18px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Total de Decisores</div>
+      <div id="chart-decisores"></div>
+    </div>
+
+    <!-- Colaboradores -->
+    <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;padding:16px 18px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Colaboradores mapeados</div>
+      <div id="chart-colab"></div>
+    </div>
+
+  </div>
+
+  <!-- TOP CIDADES CONSOLIDADO -->
+  <div class="sec-lbl">Top cidades</div>
+  <div class="sec-ttl" style="margin-bottom:16px;">Ranking consolidado por nº de empresas ICP</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:24px;" id="top-cidades-grid"></div>
+
+
+
+<!-- DADOS DE MERCADO JS -->
+<script>
+(function(){
+
+const MKT = {
+  sul: {
+    label:'Região Sul', color:'#0E8040', bcolor:'rgba(14,128,64,',
+    total:2769, decisores:130117, colab:244251, empColab:2293, empDec:2455,
+    cli:44, colabLg:103308,
+    estados:[['PR',1098],['RS',892],['SC',779]],
+    cidades:[['CURITIBA',390],['PORTO ALEGRE',272],['FLORIANOPOLIS',113],['JOINVILLE',93],['LONDRINA',78],['MARINGÁ',74],['CAXIAS DO SUL',73],['BLUMENAU',62],['SÃO JOSÉ DOS PINHAIS',58],['CASCAVEL',43]],
+    setores:[['Indústrias da transformação',932],['Manufatura',null],['Serviços',475],['Bancário',320],['Alimentos',261]],
+    decisao:[['Operacionais',2293],['Coord/Supervisão',1938],['Gerência',2250],['C-Level',1726],['Direção',1586]],
+    atividade:[['Alta atividade',2655],['Média atividade',114],['Baixa atividade',0]],
+    redes:[['Site',2365],['LinkedIn',2128],['WhatsApp',1560],['Instagram',1026],['Facebook',910],['Youtube',678]],
+  },
+  nordeste: {
+    label:'Região Nordeste', color:'#C43000', bcolor:'rgba(196,48,0,',
+    total:1627, decisores:64656, colab:119025, empColab:1336, empDec:1368,
+    cli:56, colabLg:212307,
+    estados:[['CE',383],['BA',380],['PE',374],['MA',116],['PB',88],['RN',83],['AL',78],['SE',70],['PI',55]],
+    cidades:[['FORTALEZA',249],['RECIFE',209],['SALVADOR',161],['SÃO LUÍS',64],['MACEIÓ',45],['TERESINA',44],['ARACAJU',43],['JOÃO PESSOA',43],['NATAL',41],['CAMAÇARI',34]],
+    setores:[['Serviços',443],['Indústrias da transformação',null],['Manufatura',317],['Construção',248],['Alimentos',178]],
+    decisao:[['Operacionais',1336],['Coord/Supervisão',1087],['Gerência',1223],['C-Level',858],['Direção',822]],
+    atividade:[['Alta atividade',1525],['Média atividade',101],['Baixa atividade',1]],
+    redes:[['Site',1235],['LinkedIn',1128],['WhatsApp',736],['Instagram',504],['Facebook',372],['Youtube',276]],
+  },
+  spi: {
+    label:'SP Interior', color:'#1360A0', bcolor:'rgba(19,96,160,',
+    total:2161, decisores:101145, colab:196617, empColab:1782, empDec:1874,
+    cli:39, colabLg:119297,
+    estados:[['SP',2161]],
+    cidades:[['CAMPINAS',192],['SOROCABA',91],['RIBEIRÃO PRETO',88],['JUNDIAÍ',82],['PIRACICABA',61],['SÃO JOSÉ DO RIO PRETO',45],['SÃO JOSÉ DOS CAMPOS',44],['BAURU',41],['INDAIATUBA',41],['ARARAQUARA',32]],
+    setores:[['Indústrias da transformação',855],['Manufatura',null],['Serviços',409],['Alimentos',274],['Construção',224]],
+    decisao:[['Operacionais',1782],['Coord/Supervisão',1537],['Gerência',1712],['C-Level',1284],['Direção',1241]],
+    atividade:[['Alta atividade',2050],['Média atividade',111],['Baixa atividade',0]],
+    redes:[['Site',1816],['LinkedIn',1609],['Instagram',659],['WhatsApp',625],['Facebook',566],['Youtube',457]],
+  },
+};
+
+const total = MKT.sul.total + MKT.nordeste.total + MKT.spi.total;
+
+// ── Horizontal bar ─────────────────────────────────────────────────────
+function hbar(label, val, max, color, pct){
+  const w = Math.round((val/max)*100);
+  return `<div style="margin-bottom:8px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+      <span style="font-size:11px;color:var(--text2);">${label}</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:${color};">${val.toLocaleString('pt-BR')}${pct?` <span style="font-size:10px;opacity:.6;">(${pct}%)</span>`:''}</span>
+    </div>
+    <div style="height:5px;background:rgba(13,63,143,.07);border-radius:3px;overflow:hidden;">
+      <div style="width:${w}%;height:100%;background:${color};border-radius:3px;"></div>
+    </div>
+  </div>`;
+}
+
+// ── Grouped bar chart (Mercado / Share LG / Potencial) ─────────────────
+function buildGroupedChart(canvasId, labels, mercado, shareLg, potencial){
+  const ctx = document.getElementById(canvasId);
+  if(!ctx) return;
+  if(ctx._chart) ctx._chart.destroy();
+  ctx._chart = new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        {label:'Mercado total',       data:mercado,  backgroundColor:'rgba(13,96,160,.7)',  borderRadius:4},
+        {label:'Share LG',            data:shareLg,  backgroundColor:'rgba(245,200,0,.85)', borderRadius:4},
+        {label:'Potencial',           data:potencial,backgroundColor:'rgba(14,128,64,.7)',  borderRadius:4},
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{labels:{color:'#3A5A9A',font:{family:'Barlow Condensed',size:11,weight:'700'}}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString('pt-BR')}`}}
+      },
+      scales:{
+        x:{ticks:{color:'#3A5A9A',font:{family:'Barlow Condensed',size:11}},grid:{color:'rgba(13,63,143,.06)'}},
+        y:{ticks:{color:'#3A5A9A',font:{family:'Barlow Condensed',size:11},callback:v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:1})+'Mi'},grid:{color:'rgba(13,63,143,.06)'}}
+      }
+    }
+  });
+}
+
+// ── Build comparative charts ───────────────────────────────────────────
+function buildCharts(){
+  const regs = ['sul','nordeste','spi'];
+  const labels = ['Sul','Nordeste','SP Interior'];
+  const colors = {sul:'#0E8040',nordeste:'#C43000',spi:'#1360A0'};
+
+  // Empresas
+  const maxE = Math.max(...regs.map(r=>MKT[r].total));
+  document.getElementById('chart-empresas').innerHTML =
+    regs.map(r => hbar(labels[regs.indexOf(r)], MKT[r].total, maxE, colors[r], Math.round(MKT[r].total/total*100))).join('');
+
+  // Decisores
+  const totD = MKT.sul.decisores+MKT.nordeste.decisores+MKT.spi.decisores;
+  const maxD = Math.max(...regs.map(r=>MKT[r].decisores));
+  document.getElementById('chart-decisores').innerHTML =
+    regs.map(r => hbar(labels[regs.indexOf(r)], MKT[r].decisores, maxD, colors[r])).join('');
+
+  // Colaboradores
+  const maxC = Math.max(...regs.map(r=>MKT[r].colab));
+  document.getElementById('chart-colab').innerHTML =
+    regs.map(r => hbar(labels[regs.indexOf(r)], MKT[r].colab, maxC, colors[r])).join('');
+
+  // ── Gráfico 3: Empresas ICP — Mercado | Share LG | Potencial ──
+  // Ordem: Sul, Nordeste, SP Interior (igual ao labels)
+  buildGroupedChart('chart-emp-grouped', labels,
+    [877, 568, 899],   // Mercado: Sul, Nordeste, SPI
+    [ 44,  56,  39],   // Share LG
+    [833, 512, 860]    // Potencial
+  );
+
+  // ── Gráfico 4: MRR — valores reais do estudo (R$ Mi) ──
+  // Ordem: Sul, Nordeste, SP Interior
+  buildGroupedChart('chart-mrr-grouped', labels,
+    [38.38, 24.96, 35.01],   // Mercado MRR R$ Mi
+    [ 1.65,  3.40,  1.91],   // Share LG R$ Mi
+    [36.73, 21.56, 33.10]    // Potencial R$ Mi
+  );
+}
+
+// ── Top cidades grid ───────────────────────────────────────────────────
+function buildTopCidades(){
+  const grid = document.getElementById('top-cidades-grid');
+  if(!grid || grid.innerHTML) return;
+  ['sul','spi','nordeste'].forEach(r => {
+    const d = MKT[r];
+    const maxC = d.cidades[0][1];
+    grid.innerHTML += `<div style="background:#fff;border:1px solid var(--brd);border-radius:10px;padding:14px 16px;">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px;">
+        <div style="width:10px;height:10px;border-radius:2px;background:${d.color};flex-shrink:0;"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:${d.color};">${d.label}</div>
+        <div style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--text3);">${d.total.toLocaleString('pt-BR')}</div>
+      </div>
+      ${d.cidades.slice(0,8).map(([c,v])=>hbar(c,v,maxC,d.color,null)).join('')}
+    </div>`;
+  });
+}
+
+// ── Region panel ───────────────────────────────────────────────────────
+function buildRegionPanel(key){
+  const d = MKT[key];
+  const maxC = d.cidades[0][1];
+  const maxS = Math.max(...d.setores.filter(s=>s[1]).map(s=>s[1]));
+  const maxD = Math.max(...d.decisao.map(s=>s[1]));
+  const maxA = d.atividade[0][1];
+  const maxR = d.redes[0][1];
+  const card = `background:#fff;border:1px solid var(--brd);border-radius:10px;padding:14px 16px;`;
+  const ttl = `font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;`;
+
+  return `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+    <div style="grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+      ${[['Empresas ICP',d.total],['Emp. c/ Decisores',d.empDec],['Total Decisores',d.decisores],['Emp. c/ Colaboradores',d.empColab],['Total Colaboradores',d.colab]]
+        .map(([l,v])=>`<div style="${card.replace('#fff',d.bcolor+'.06)')}border:1px solid ${d.bcolor}.18);">
+          <div style="${ttl}color:${d.bcolor+'1)'}">${l}</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:${d.color};">${v.toLocaleString('pt-BR')}</div>
+        </div>`).join('')}
+    </div>
+    <div style="${card}"><div style="${ttl}">Top Cidades</div>${d.cidades.map(([c,v])=>hbar(c,v,maxC,d.color)).join('')}</div>
+    <div style="${card}"><div style="${ttl}">Por Estado</div>${d.estados.map(([e,v])=>hbar(e,v,d.estados[0][1],d.color,Math.round(v/d.total*100))).join('')}</div>
+    <div style="${card}"><div style="${ttl}">Top Setores</div>${d.setores.filter(s=>s[1]).map(([s,v])=>hbar(s,v,maxS,d.color)).join('')}</div>
+    <div style="${card}"><div style="${ttl}">Nível de Decisão</div>${d.decisao.map(([l,v])=>hbar(l,v,maxD,d.color)).join('')}</div>
+    <div style="${card}"><div style="${ttl}">Nível de Atividade</div>${d.atividade.map(([l,v])=>hbar(l,v,maxA,d.color,Math.round(v/d.total*100))).join('')}</div>
+    <div style="${card}"><div style="${ttl}">Presença Digital</div>${d.redes.map(([l,v])=>hbar(l,v,maxR,d.color,Math.round(v/d.total*100))).join('')}</div>
+  </div>`;
+}
+
+window.swRegion = function(key, btn){
+  document.querySelectorAll('.rtab').forEach(b=>{
+    b.style.background='transparent';
+    b.style.color='var(--text3)';
+    b.style.borderColor='var(--brd)';
+  });
+  const d = MKT[key];
+  btn.style.background = d.bcolor+'.1)';
+  btn.style.color = d.color;
+  btn.style.borderColor = d.bcolor+'.3)';
+  document.getElementById('region-panel').innerHTML = buildRegionPanel(key);
+};
+
+window.buildCharts     = buildCharts;
+window.buildTopCidades = buildTopCidades;
+window.buildRegionPanel= buildRegionPanel;
+
+})();
+</script>
+
+  <!-- DETALHAMENTO POR REGIÃO -->
+  <div class="sec-lbl">Potencial detalhado por região</div>
+  <div class="sec-ttl" style="margin-bottom:14px;">Estudos Econodata — dados completos</div>
+  <div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;" id="region-tabs">
+    <button class="rtab active" onclick="swRegion('sul',this)" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:7px;border:1px solid rgba(14,128,64,.35);background:rgba(14,128,64,.1);color:#0E8040;cursor:pointer;">🟢 Região Sul</button>
+    <button class="rtab" onclick="swRegion('nordeste',this)" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:7px;border:1px solid var(--brd);background:transparent;color:var(--text3);cursor:pointer;">🔴 Região Nordeste</button>
+    <button class="rtab" onclick="swRegion('spi',this)" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:7px;border:1px solid var(--brd);background:transparent;color:var(--text3);cursor:pointer;">🔵 SP Interior</button>
+  </div>
+  <div id="region-panel"></div>
+
 </div>
 
 <div class="sec" id="tab-fin">
@@ -263,7 +701,7 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
       <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'receita','Receita')">Receita</span>
       <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'custo','Custo')">Custo</span>
       <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'proj','Projeção')">Projeção</span>
-      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'risco','Risco')">Risco</span>
+      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--mu);" onclick="st2(this,'risco','Risco')">Risco</span>
     </div>
   </div>
 </div>
@@ -284,7 +722,7 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
       <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'proc','Processo')">Processo</span>
       <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'equipe','Equipe')">Equipe</span>
       <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'infra','Infraestrutura')">Infraestrutura</span>
-      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'prazo','Prazo')">Prazo</span>
+      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--mu);" onclick="st2(this,'prazo','Prazo')">Prazo</span>
     </div>
   </div>
 </div>
@@ -305,7 +743,7 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
       <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'digital','Canal digital')">Canal digital</span>
       <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'evento','Evento')">Evento</span>
       <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'cont','Conteúdo')">Conteúdo</span>
-      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'parc','Parceria')">Parceria</span>
+      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--mu);" onclick="st2(this,'parc','Parceria')">Parceria</span>
     </div>
   </div>
 </div>
@@ -340,7 +778,7 @@ body{font-family:'Barlow',sans-serif;background:var(--mb);color:#fff;min-height:
       <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'pesq','Pesquisa')">Pesquisa</span>
       <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'rel','Relatório')">Relatório</span>
       <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'art','Artigo')">Artigo</span>
-      <span class="ut" style="background:rgba(255,255,255,.08);color:var(--mu);" onclick="st2(this,'doc','Doc. interno')">Doc. interno</span>
+      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--mu);" onclick="st2(this,'doc','Doc. interno')">Doc. interno</span>
     </div>
   </div>
 </div>
@@ -424,7 +862,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   [{l:'Fluxo de caixa',p:30,c:'#F5C800'},{l:'Projeções de receita',p:10,c:'#5DDDB8'},{l:'Break-even',p:0,c:'#3B8FE8'},{l:'Custos de expansão',p:0,c:'#F58C3E'}].forEach(b=>{
     const el=document.createElement('div');
     el.style.cssText='display:flex;align-items:center;gap:10px;margin-bottom:8px;';
-    el.innerHTML=`<span style="font-size:11px;color:${MU};width:150px;flex-shrink:0;">${b.l}</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;"><div style="width:${b.p}%;height:100%;background:${b.c};border-radius:2px;"></div></div><span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:${b.c};min-width:30px;text-align:right;">${b.p}%</span>`;
+    el.innerHTML=`<span style="font-size:11px;color:${MU};width:150px;flex-shrink:0;">${b.l}</span><div style="flex:1;height:4px;background:rgba(13,63,143,0.06);border-radius:2px;"><div style="width:${b.p}%;height:100%;background:${b.c};border-radius:2px;"></div></div><span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:${b.c};min-width:30px;text-align:right;">${b.p}%</span>`;
     document.getElementById('pbars').appendChild(el);
   });
 });
@@ -439,7 +877,13 @@ function swTab(id,btn){
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
-  if(id==='geo') setTimeout(initHubMap, 100);
+  if(id==='geo') setTimeout(()=>{ initHubMap(); if(window._hubMap) window._hubMap.invalidateSize(); }, 150);
+  if(id==='mkt-data') setTimeout(()=>{
+    buildCharts();
+    buildTopCidades();
+    if(document.getElementById('region-panel') && !document.getElementById('region-panel').innerHTML)
+      document.getElementById('region-panel').innerHTML = buildRegionPanel('sul');
+  }, 50);
 }
 function sf(id){document.getElementById(id).classList.remove('hidden');}
 function hf(id){document.getElementById(id).classList.add('hidden');}
@@ -456,7 +900,7 @@ function ri(sec){
       <span><span style="font-size:9px;padding:2px 7px;border-radius:999px;border:1px solid;margin-right:7px;color:${item.tag.col}">${item.tag.label}</span>${item.t}</span>
       <span class="chv">▼</span></div>
       <div class="bbody"><p>${item.d||'Sem descrição.'}</p>
-        <button onclick="rm('${sec}',${i})" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 9px;color:var(--mu);cursor:pointer;">Remover</button>
+        <button onclick="rm('${sec}',${i})" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(--brd);border-radius:5px;padding:3px 9px;color:var(--mu);cursor:pointer;">Remover</button>
       </div></div>`).join('');
 }
 function rm(sec,i){ST[sec].splice(i,1);ri(sec);uc(sec);}
@@ -474,7 +918,7 @@ function addRef(){
       <span class="chv">▼</span></div>
       <div class="bbody">${r.u?`<p style="margin-bottom:5px;"><a href="${r.u}" style="color:var(--y);">${r.u}</a></p>`:''}
         <p>${r.d||''}</p>
-        <button onclick="rmr(${i})" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 9px;color:var(--mu);cursor:pointer;">Remover</button>
+        <button onclick="rmr(${i})" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(--brd);border-radius:5px;padding:3px 9px;color:var(--mu);cursor:pointer;">Remover</button>
       </div></div>`).join('');
   hf('rf');['r-t','r-u','r-d'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('rc2').textContent=ST.refs.length;
@@ -703,6 +1147,7 @@ async function initHubMap(){
   hubMapLoaded = true;
 
   const hubMap = L.map('hub-map',{center:[-18,-50],zoom:5,zoomControl:true,attributionControl:false,scrollWheelZoom:true});
+  window._hubMap = hubMap;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18,subdomains:'abcd'}).addTo(hubMap);
 
   const BASE='https://servicodados.ibge.gov.br/api/v3/malhas';
@@ -755,7 +1200,7 @@ async function initHubMap(){
     g.zones.forEach(z=>{
       const info=HUB_ZONES[z];
       const pill=document.createElement('div');
-      pill.style.cssText=`display:flex;align-items:center;gap:4px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);`;
+      pill.style.cssText=`display:flex;align-items:center;gap:4px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);`;
       pill.innerHTML=`<div style="width:10px;height:10px;border-radius:2px;background:${info.color};flex-shrink:0;"></div>${info.label}`;
       pills.appendChild(pill);
     });
@@ -780,7 +1225,15 @@ async function initHubMap(){
 }
 
 // Init map on page load since geo is the default tab
-document.addEventListener('DOMContentLoaded', ()=>setTimeout(initHubMap, 500));
+document.addEventListener('DOMContentLoaded', ()=>{
+  // mkt-data is first tab - init charts immediately
+  setTimeout(()=>{
+    buildCharts();
+    buildTopCidades();
+    if(document.getElementById('region-panel') && !document.getElementById('region-panel').innerHTML)
+      document.getElementById('region-panel').innerHTML = buildRegionPanel('sul');
+  }, 200);
+});
 </script>
 <style>
 .hub-city-lbl{background:transparent !important;border:none !important;box-shadow:none !important;font-family:'Barlow Condensed',sans-serif !important;font-size:10px !important;font-weight:700 !important;color:#fff !important;text-shadow:0 1px 3px #000,0 0 5px #000 !important;white-space:nowrap !important;pointer-events:none !important;}
@@ -815,18 +1268,18 @@ document.addEventListener('DOMContentLoaded', ()=>setTimeout(initHubMap, 500));
     const isSede = r.tipo === 'Sede';
     const bg = i%2===0 ? 'rgba(255,255,255,.02)' : 'transparent';
     const regBg = isNew ? `background:${r.col}18;` : '';
-    const cell = (v, center) => `<td style="padding:9px ${center?'6':'14'}px;font-size:12px;color:rgba(255,255,255,.75);border-bottom:1px solid rgba(255,255,255,.05);text-align:${center?'center':'left'};">${v||'—'}</td>`;
-    const numCell = (v) => `<td style="padding:9px 6px;font-size:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:${v?'rgba(255,255,255,.85)':'rgba(255,255,255,.2)'};border-bottom:1px solid rgba(255,255,255,.05);text-align:center;">${v||'—'}</td>`;
+    const cell = (v, center) => `<td style="padding:9px ${center?'6':'14'}px;font-size:12px;color:var(--text);border-bottom:1px solid var(--brd);text-align:${center?'center':'left'};">${v||'—'}</td>`;
+    const numCell = (v) => `<td style="padding:9px 6px;font-size:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:${v?'var(--db)':'var(--text3)'};border-bottom:1px solid var(--brd);text-align:center;">${v||'—'}</td>`;
     tbody.innerHTML += `<tr style="${bg}${regBg}">
-      <td style="padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.05);">
+      <td style="padding:9px 14px;border-bottom:1px solid var(--brd);">
         ${isNew?`<span style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:4px;background:${r.col}22;color:${r.col};">${r.reg}</span>`:''}
       </td>
-      <td style="padding:9px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.05);">${r.cidade}</td>
-      <td style="padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.05);">
+      <td style="padding:9px 14px;font-size:12px;font-weight:500;color:var(--text);border-bottom:1px solid var(--brd);">${r.cidade}</td>
+      <td style="padding:9px 14px;border-bottom:1px solid var(--brd);">
         <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em;background:${isSede?'rgba(245,200,0,.15)':'rgba(255,255,255,.06)'};color:${isSede?'#F5C800':'rgba(255,255,255,.5)'};">${r.tipo}</span>
       </td>
       ${numCell(r.gerente)}${numCell(r.exec)}${numCell(r.bdr)}${numCell(r.arq)}
-      <td style="padding:9px 14px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:${r.col};border-bottom:1px solid rgba(255,255,255,.05);">${r.total}</td>
+      <td style="padding:9px 14px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:${r.col};border-bottom:1px solid var(--brd);">${r.total}</td>
     </tr>`;
   });
 })();
@@ -851,12 +1304,12 @@ function renderPb(){
     <div class="blk">
       <div class="btit" onclick="tog(this)">
         <span><span style="font-size:9px;padding:2px 7px;border-radius:999px;border:1px solid;margin-right:7px;color:${item.tag.col||'#fff'};border-color:${item.tag.col||'rgba(255,255,255,.2)'};">${item.tag.label||'Doc'}</span>${item.t}</span>
-        <span style="font-size:9px;color:rgba(255,255,255,.3);margin-right:8px;">${item.date}</span>
+        <span style="font-size:9px;color:var(--text3);margin-right:8px;">${item.date}</span>
         <span class="chv">▼</span>
       </div>
       <div class="bbody">
         <p style="white-space:pre-wrap;">${item.d||'Sem descrição.'}</p>
-        <button onclick="pbState.splice(${i},1);renderPb();updPbCounters();" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 9px;color:rgba(255,255,255,.4);cursor:pointer;">Remover</button>
+        <button onclick="pbState.splice(${i},1);renderPb();updPbCounters();" style="margin-top:9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(--brd);border-radius:5px;padding:3px 9px;color:var(--text3);cursor:pointer;">Remover</button>
       </div>
     </div>`).join('');
 }
@@ -895,12 +1348,12 @@ function updPbCounters(){
   font-size:20px;text-transform:uppercase;letter-spacing:.04em;
   color:#fff;margin-bottom:4px;
 }
-.auth-sub{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:28px;}
+.auth-sub{font-size:12px;color:var(--text3);margin-bottom:28px;}
 .auth-input{
   width:100%;padding:12px 16px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:8px;color:#fff;
+  background:rgba(13,63,143,.05);
+  border:1px solid var(--brd);
+  border-radius:8px;color:var(--text);
   font-family:'Barlow',sans-serif;font-size:14px;
   outline:none;margin-bottom:12px;
   transition:border-color .2s;
@@ -908,7 +1361,7 @@ function updPbCounters(){
   letter-spacing:.1em;
 }
 .auth-input:focus{border-color:rgba(245,200,0,.5);}
-.auth-input::placeholder{color:rgba(255,255,255,.25);letter-spacing:.05em;}
+.auth-input::placeholder{color:var(--text3);letter-spacing:.05em;}
 .auth-btn{
   width:100%;padding:12px;
   background:#F5C800;color:#0D3F8F;
@@ -924,7 +1377,7 @@ function updPbCounters(){
   transition:opacity .2s;
 }
 .auth-footer{
-  font-size:10px;color:rgba(255,255,255,.2);
+  font-size:10px;color:var(--text3);
   margin-top:20px;letter-spacing:.06em;
 }
 </style>
