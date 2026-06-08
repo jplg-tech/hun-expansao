@@ -193,53 +193,19 @@ body{font-family:'Barlow',sans-serif;background:#F5F7FB;color:var(--text);min-he
       </table>
     </div>
   </div>
-  <div class="krow">
-    <div class="kpi"><div class="kl">Cidades analisadas</div><div class="kv">19</div><div class="ks">SP · Sul · Nordeste</div></div>
-    <div class="kpi"><div class="kl">Massa salarial total</div><div class="kv">R$ 374 Bi</div><div class="ks">estimativa anual</div></div>
-    <div class="kpi"><div class="kl">Empresas 100+</div><div class="kv">13.470</div><div class="ks">contas-alvo</div></div>
-    <div class="kpi"><div class="kl">Empregos formais</div><div class="kv">7,4 Mi</div></div>
-    <div class="kpi"><div class="kl">Líder HCM</div><div class="kv" style="font-size:18px;">Campinas</div><div class="ks">índice 100</div></div>
+
+  <!-- ESTRUTURA ORGANOGRAMA EXPANSÃO -->
+  <div class="sec-lbl" style="margin-top:24px;">Estrutura de equipe</div>
+  <div class="sec-ttl" style="margin-bottom:14px;">Organograma Expansão</div>
+  <div style="background:#fff;border:1px solid var(--brd);border-radius:10px;overflow:hidden;">
+    <iframe
+      src="https://playbook-play-magic.lovable.app/expansao"
+      style="width:100%;height:620px;border:none;display:block;"
+      allow="fullscreen"
+      title="Organograma — Expansão HCM LG lugar de gente"
+    ></iframe>
   </div>
-  <div class="cg">
-    <div class="cc full">
-      <div class="ct">Índice de Potencial HCM — Top 15 territórios</div>
-      <div class="cs">Score normalizado (0–100) · ponderado por massa salarial, empresas-alvo, empregos formais e crescimento</div>
-      <div class="cw tall"><canvas id="cTop"></canvas></div>
-    </div>
-    <div class="cc">
-      <div class="ct">Empresas ICP 300–5k por região</div>
-      <div class="cs">Enterprise / mid-market HCM</div>
-      <div class="cw sm"><canvas id="cIcp"></canvas></div>
-    </div>
-    <div class="cc">
-      <div class="ct">Crescimento do emprego formal</div>
-      <div class="cs">Top 10 territórios · variação %</div>
-      <div class="cw"><canvas id="cGrow"></canvas></div>
-    </div>
-    <div class="cc full">
-      <div class="ct">Ranking completo — todos os territórios</div>
-      <div class="cs">Ordenado pelo índice HCM calculado · modelo ponderado por 5 indicadores</div>
-      <table class="rtbl">
-        <thead><tr><th>#</th><th>Cidade</th><th>Massa salarial</th><th>Emp. 100+</th><th>Emp. 300–5k</th><th>Crescimento</th><th>Índice HCM</th></tr></thead>
-        <tbody id="rb"></tbody>
-      </table>
-    </div>
-  </div>
-  <div class="sec-lbl">Notas territoriais</div>
-  <div class="sec-ttl">Adicionar análises por território</div>
-  <div id="geo-items"></div>
-  <button class="addb" onclick="sf('gf')">+ Adicionar nota de território</button>
-  <div id="gf" class="form-box hidden">
-    <div class="irow"><input id="g-t" placeholder="Território (ex: Campinas — oportunidades)"/><button onclick="ai('geo')">Salvar</button><button class="cn" onclick="hf('gf')">✕</button></div>
-    <div class="irow"><textarea id="g-d" rows="2" placeholder="Análise, contatos, observações estratégicas..."></textarea></div>
-    <div class="trow">
-      <span class="ut" style="background:rgba(245,200,0,.15);color:var(--sp);border-color:rgba(245,200,0,.3);" onclick="st2(this,'sp','Interior SP')">Interior SP</span>
-      <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);border-color:rgba(93,221,184,.3);" onclick="st2(this,'sul','Sul')">Sul</span>
-      <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);border-color:rgba(245,140,62,.3);" onclick="st2(this,'ne','Nordeste')">Nordeste</span>
-      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--mu);" onclick="st2(this,'g','Geral')">Geral</span>
-    </div>
-  </div>
-</div>
+
 
 <!-- FIN -->
 
@@ -279,6 +245,7 @@ body{font-family:'Barlow',sans-serif;background:#F5F7FB;color:var(--text);min-he
       <div style="padding:14px;font-size:12px;color:var(--text2);line-height:1.7;">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
           <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas + Filiais</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">2.769</div></div>
+          <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas Matrizes</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">877</div></div>
           <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Colaboradores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">244.251</div></div>
           <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Decisores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">130.117</div></div>
           <div style="background:rgba(14,128,64,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Estados</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#0E8040;">PR · RS · SC</div></div>
@@ -296,6 +263,7 @@ body{font-family:'Barlow',sans-serif;background:#F5F7FB;color:var(--text);min-he
       <div style="padding:14px;font-size:12px;color:var(--text2);line-height:1.7;">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
           <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas + Filiais</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">1.627</div></div>
+          <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas Matrizes</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">568</div></div>
           <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Colaboradores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">119.025</div></div>
           <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Decisores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">64.656</div></div>
           <div style="background:rgba(196,48,0,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Estados</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#C43000;">9 estados</div></div>
@@ -313,6 +281,7 @@ body{font-family:'Barlow',sans-serif;background:#F5F7FB;color:var(--text);min-he
       <div style="padding:14px;font-size:12px;color:var(--text2);line-height:1.7;">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
           <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas + Filiais</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">2.161</div></div>
+          <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Empresas Matrizes</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">899</div></div>
           <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Colaboradores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">196.617</div></div>
           <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Decisores</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">101.145</div></div>
           <div style="background:rgba(19,96,160,.06);border-radius:7px;padding:10px 12px;"><div style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Estado</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1360A0;">SP</div></div>
@@ -695,7 +664,7 @@ window.buildRegionPanel= buildRegionPanel;
     <div class="kpi"><div class="kl">Retorno estimado</div><div class="kv">— meses</div></div>
   </div>
   <div class="cc" style="margin-bottom:16px;">
-    <div class="ct" style="margin-bottom:12px;">Progresso das análises financeiras</div>
+    <div class="ct" style="margin-bottom:12px;">Progresso das análises</div>
     <div id="pbars"></div>
   </div>
   <div id="fin-items"></div>
@@ -707,7 +676,7 @@ window.buildRegionPanel= buildRegionPanel;
       <span class="ut" style="background:rgba(93,221,184,.12);color:var(--sul);" onclick="st2(this,'receita','Receita')">Receita</span>
       <span class="ut" style="background:rgba(245,140,62,.12);color:var(--ne);" onclick="st2(this,'custo','Custo')">Custo</span>
       <span class="ut" style="background:rgba(245,200,0,.12);color:var(--sp);" onclick="st2(this,'proj','Projeção')">Projeção</span>
-      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--mu);" onclick="st2(this,'risco','Risco')">Risco</span>
+      <span class="ut" style="background:rgba(13,63,143,.06);color:var(--text3);" onclick="st2(this,'risco','Risco')">Risco</span>
     </div>
   </div>
 </div>
