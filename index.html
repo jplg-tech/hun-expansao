@@ -647,6 +647,223 @@ window.buildRegionPanel= buildRegionPanel;
 </div>
 
 <div class="sec" id="tab-fin">
+  <!-- ORGANOGRAMA -->
+  <div class="sec-lbl">Estrutura de equipe</div>
+  <div class="sec-ttl" style="margin-bottom:20px;">Organograma Expansão HCM</div>
+
+  <style>
+    .org-wrap{display:flex;flex-direction:column;align-items:center;gap:0;font-family:'Barlow',sans-serif;}
+    .org-line{width:2px;height:24px;background:var(--brd);margin:0 auto;}
+    .org-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+    .org-col{display:flex;flex-direction:column;align-items:center;}
+    .org-branch{display:flex;justify-content:center;gap:16px;position:relative;}
+    .org-hline{position:absolute;top:0;left:50%;transform:translateX(-50%);height:2px;background:var(--brd);}
+    .org-card{background:#fff;border:1px solid var(--brd);border-radius:10px;padding:14px 16px;width:220px;cursor:pointer;transition:box-shadow .2s;position:relative;}
+    .org-card:hover{box-shadow:0 4px 16px rgba(13,63,143,.12);}
+    .org-card.expanded{border-color:var(--db);}
+    .org-role{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+    .org-name{font-size:12px;color:var(--text3);margin-bottom:6px;}
+    .org-tag{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;display:inline-block;}
+    .org-detail{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--brd);font-size:11px;color:var(--text2);line-height:1.6;}
+    .org-detail.open{display:block;}
+    .org-detail h4{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:8px 0 4px;}
+    .org-detail ul{padding-left:14px;margin:0;}
+    .org-detail li{margin-bottom:2px;}
+    .org-toggle{position:absolute;top:12px;right:12px;font-size:10px;color:var(--text3);cursor:pointer;}
+    .org-perfil-tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap;}
+    .org-ptab{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;border:1px solid var(--brd);background:transparent;color:var(--text3);cursor:pointer;transition:all .15s;}
+    .org-ptab.active{background:var(--db);color:#fff;border-color:var(--db);}
+    .org-pcontent{display:none;}
+    .org-pcontent.active{display:block;}
+  </style>
+
+  <div class="org-wrap">
+
+    <!-- GERENTE -->
+    <div class="org-card" onclick="toggleOrg(this)" style="width:260px;">
+      <span class="org-toggle">▼</span>
+      <div class="org-role" style="color:var(--db);">Gerente Comercial</div>
+      <div class="org-name">1 por macrorregião · 3 no total</div>
+      <span class="org-tag" style="background:rgba(13,63,143,.1);color:var(--db);">Liderança</span>
+      <div class="org-detail">
+        <h4>Missão</h4>
+        <p>Liderar a operação comercial da macrorregião, garantindo execução do plano de expansão, desenvolvimento do time e atingimento das metas de receita.</p>
+        <h4>Responsabilidades</h4>
+        <ul>
+          <li>Gestão e desenvolvimento dos Executivos Comerciais</li>
+          <li>Construção e acompanhamento do território</li>
+          <li>Pipeline review e forecast regional</li>
+          <li>Interface com liderança nacional e produto</li>
+          <li>Recrutamento e onboarding da equipe local</li>
+        </ul>
+        <h4>Perfil desejado</h4>
+        <ul>
+          <li>Experiência em liderança de times SaaS B2B</li>
+          <li>Background em HCM, Folha ou ERP</li>
+          <li>Histórico de desenvolvimento de territórios</li>
+          <li>Forte capacidade analítica e de coaching</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="org-line"></div>
+
+    <!-- LINHA HORIZONTAL CONECTORA -->
+    <div style="position:relative;display:flex;justify-content:center;width:100%;max-width:900px;margin-bottom:0;">
+      <div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:var(--brd);"></div>
+    </div>
+
+    <!-- EXECUTIVOS + BDR + ARQ -->
+    <div class="org-row" style="margin-top:0;align-items:flex-start;">
+
+      <!-- EXECUTIVO COMERCIAL -->
+      <div class="org-col">
+        <div class="org-line"></div>
+        <div class="org-card" style="width:280px;" onclick="toggleOrg(this)">
+          <span class="org-toggle">▼</span>
+          <div class="org-role" style="color:#1360A0;">Executivo Comercial</div>
+          <div class="org-name">5 AEs por macrorregião</div>
+          <span class="org-tag" style="background:rgba(19,96,160,.1);color:#1360A0;">Comercial · 3 perfis</span>
+          <div class="org-detail">
+            <!-- PERFIL TABS -->
+            <div class="org-perfil-tabs">
+              <button class="org-ptab active" onclick="swPerfil(this,'p1');event.stopPropagation()">Perfil 1</button>
+              <button class="org-ptab" onclick="swPerfil(this,'p2');event.stopPropagation()">Perfil 2</button>
+              <button class="org-ptab" onclick="swPerfil(this,'p3');event.stopPropagation()">Perfil 3</button>
+            </div>
+
+            <div id="p1" class="org-pcontent active">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--db);margin-bottom:4px;">Hunter SaaS Enterprise — 3 AEs (1 AE Consultoria)</div>
+              <h4>Missão</h4>
+              <p>Trazer profundidade de mercado, credibilidade consultiva e acelerar a identificação de oportunidades.</p>
+              <h4>Background desejado</h4>
+              <ul>
+                <li>Experiência em vendas consultivas SaaS B2B</li>
+                <li>Preferencialmente HCM, Folha, Ponto, Benefícios ou ERP</li>
+                <li>Histórico consistente de atingimento de quota</li>
+                <li>Venda para empresas de médio e grande porte</li>
+                <li>Relacionamento com decisores de RH, TI e Finanças</li>
+              </ul>
+            </div>
+
+            <div id="p2" class="org-pcontent">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--db);margin-bottom:4px;">Especialista de Mercado RH — 1 CS de concorrente</div>
+              <h4>Missão</h4>
+              <p>Gerar receita de curto prazo e acelerar a entrada da operação em novas regiões.</p>
+              <h4>Background desejado</h4>
+              <ul>
+                <li>Experiência em gestão de clientes concorrentes (Senior e Totvs)</li>
+                <li>Conhecimento dos principais processos de RH e DP</li>
+                <li>Entendimento das tendências do mercado de gestão de pessoas</li>
+              </ul>
+              <h4>Competências</h4>
+              <ul>
+                <li>Mapeamento de dores de negócio</li>
+                <li>Discovery aprofundada</li>
+                <li>Construção de diagnósticos</li>
+                <li>Capacidade consultiva</li>
+                <li>Conhecimento de legislação e processos de RH</li>
+              </ul>
+            </div>
+
+            <div id="p3" class="org-pcontent">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--db);margin-bottom:4px;">Process Builder — 1 AE de startup</div>
+              <h4>Missão</h4>
+              <p>Elevar a maturidade comercial da operação e garantir previsibilidade dos resultados.</p>
+              <h4>Background desejado</h4>
+              <ul>
+                <li>Experiência como AE, Sales Excellence, RevOps ou líder comercial</li>
+                <li>Forte domínio de metodologias de vendas</li>
+                <li>Histórico de vendas consultivas complexas</li>
+              </ul>
+              <h4>Competências</h4>
+              <ul>
+                <li>MEDDICC · SPIN Selling</li>
+                <li>Account Planning · Territory Planning</li>
+                <li>Gestão de Pipeline · Forecast</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BDR -->
+      <div class="org-col">
+        <div class="org-line"></div>
+        <div class="org-card" onclick="toggleOrg(this)">
+          <span class="org-toggle">▼</span>
+          <div class="org-role" style="color:#0E8040;">BDR</div>
+          <div class="org-name">2 por macrorregião · 6 no total</div>
+          <span class="org-tag" style="background:rgba(14,128,64,.1);color:#0E8040;">Prospecção</span>
+          <div class="org-detail">
+            <h4>Missão</h4>
+            <p>Gerar pipeline qualificado para os Executivos Comerciais através de prospecção ativa e geração de demanda.</p>
+            <h4>Responsabilidades</h4>
+            <ul>
+              <li>Prospecção outbound (cold call, email, LinkedIn)</li>
+              <li>Qualificação de leads por território</li>
+              <li>Agendamento de reuniões para os AEs</li>
+              <li>Mapeamento de contas e decisores</li>
+            </ul>
+            <h4>Perfil desejado</h4>
+            <ul>
+              <li>Experiência em prospecção B2B</li>
+              <li>Resiliência e alta capacidade de volume</li>
+              <li>Conhecimento básico de RH é diferencial</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARQ. SOLUÇÕES -->
+      <div class="org-col">
+        <div class="org-line"></div>
+        <div class="org-card" onclick="toggleOrg(this)">
+          <span class="org-toggle">▼</span>
+          <div class="org-role" style="color:#C43000;">Arquiteto de Soluções</div>
+          <div class="org-name">2 por macrorregião · 6 no total</div>
+          <span class="org-tag" style="background:rgba(196,48,0,.1);color:#C43000;">Técnico-Comercial</span>
+          <div class="org-detail">
+            <h4>Missão</h4>
+            <p>Suportar tecnicamente o ciclo de vendas, garantindo aderência da solução LG às necessidades do cliente.</p>
+            <h4>Responsabilidades</h4>
+            <ul>
+              <li>Apresentações técnicas e demos customizadas</li>
+              <li>Construção de proposta de valor técnica</li>
+              <li>Suporte em RFPs e processos de seleção</li>
+              <li>Interface com produto e implantação</li>
+            </ul>
+            <h4>Perfil desejado</h4>
+            <ul>
+              <li>Sólido conhecimento em HCM, Folha ou ERP</li>
+              <li>Capacidade de traduzir tecnologia em valor de negócio</li>
+              <li>Experiência em pré-vendas ou implantação SaaS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end org-row -->
+  </div><!-- end org-wrap -->
+
+  <script>
+  function toggleOrg(card){
+    const detail = card.querySelector('.org-detail');
+    const toggle = card.querySelector('.org-toggle');
+    const open = detail.classList.toggle('open');
+    card.classList.toggle('expanded', open);
+    toggle.textContent = open ? '▲' : '▼';
+  }
+  function swPerfil(btn, pid){
+    const card = btn.closest('.org-card');
+    card.querySelectorAll('.org-ptab').forEach(b=>b.classList.remove('active'));
+    card.querySelectorAll('.org-pcontent').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(pid).classList.add('active');
+  }
+  </script>
+
+  <div style="height:24px;"></div>
   <div class="krow">
     <div class="kpi"><div class="kl">Itens registrados</div><div class="kv" id="fc">0</div></div>
     <div class="kpi"><div class="kl">Receita projetada</div><div class="kv">R$ —</div></div>
